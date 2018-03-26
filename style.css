@@ -1,8 +1,10 @@
 /*Mídias Sociais para Empreendedoras*/
-
+#midias-sociais-empreendedoras .title {
+	color: #E8B9C2;
+}
 #midias-sociais-empreendedoras .hero {
 	background-color: #E8B9C2; ;
-	background: url('images/pexels-photo.jpeg') no-repeat center center;
+	background: url('images/pexels-photo.jpeg') no-repeat top left;
   	background-size: cover;
   	padding-bottom: 0;
 
