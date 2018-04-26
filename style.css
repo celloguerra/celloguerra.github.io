@@ -1,4 +1,6 @@
 /*Mídias Sociais para Empreendedoras*/
+ a{color:#4a4a4a; text-decoration: underline;}
+
  body#midias-sociais-empreendedoras {
     background-color: #F9D8DE;
 }
@@ -10,4 +12,24 @@
 }
 .center {
 	text-align: center;
+}
+
+.ProfileAvatar {
+    background: #fff;
+    border: 5px solid #fff;
+    position: relative;
+}
+
+.map-responsive{
+    overflow:hidden;
+    padding-bottom:56.25%;
+    position:relative;
+    height:0;
+}
+.map-responsive iframe{
+    left:0;
+    top:0;
+    height:100%;
+    width:100%;
+    position:absolute;
 }
