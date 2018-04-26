@@ -49,8 +49,15 @@
     <span class="upprice">POR APENAS</span><br/>
     <span class="price is-size-1 has-text-weight-bold">R$ 150,00</span>
     <p class="subtitle">
-      <a href="https://pag.ae/bfwHcFH" class="button is-warning is-large">Compra Agora!</a><br/>
-      <span class="is-size-7">Você seráredirecionado para o "PagSeguro"</span> 
+      <!-- INICIO FORMULARIO BOTAO PAGSEGURO -->
+<form action="https://pagseguro.uol.com.br/checkout/v2/payment.html" method="post" onsubmit="PagSeguroLightbox(this); return false;">
+<!-- NÃO EDITE OS COMANDOS DAS LINHAS ABAIXO -->
+<input type="hidden" name="code" value="953F0F297D7DFEB994127FB0F58399AC" />
+<input type="hidden" name="iot" value="button" />
+<input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/209x48-comprar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
+</form>
+<script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO --> 
     </p>
   </div>
 </div>
@@ -60,11 +67,44 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <p>
-        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
-        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
-        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
-      </p>
+      <script src="ENTER ENTIRE API URL HERE" type="text/javascript"></script>
+    <script type="text/javascript">
+    google.load("feeds", "1");
+ 
+    function feedLoaded(result) {
+      if (!result.error) {
+        // Grab the container we will put the results into
+        var container = document.getElementById("mybox");
+        container.innerHTML = '';
+        // Check out the result object for a list of properties returned in each entry.
+        // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
+        for (var i = 0; i < result.feed.entries.length; i++) {
+ 
+ 
+          var entry = result.feed.entries[i];
+          var div = document.createElement("div");
+ 
+var date = new Date(entry.publishedDate);
+  date = date.toDateString().substr(4);
+ 
+          div.appendChild(document.createTextNode('This much as of ' + date + ': $' + entry.content));
+          container.appendChild(div);
+        }
+      }
+    }
+ 
+    function OnLoad() {
+ 
+      var feed = new google.feeds.Feed("https://spreadsheets.google.com/feeds/cells/ENTER-SPREAD-SHEET-KEY-HERE/od6/public/basic?hl=en_US&range=ENTER-CELL-COORDINATE-HERE");
+ 
+      feed.includeHistoricalEntries();
+      feed.setNumEntries(1); // maximum entries
+ 
+      feed.load(feedLoaded);
+    }
+ 
+    google.setOnLoadCallback(OnLoad);
+    </script>
     </div>
   </div>
 </footer>
