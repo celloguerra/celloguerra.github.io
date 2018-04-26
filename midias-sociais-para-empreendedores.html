@@ -57,7 +57,19 @@
 <input type="image" src="https://stc.pagseguro.uol.com.br/public/img/botoes/pagamentos/209x48-comprar-assina.gif" name="submit" alt="Pague com PagSeguro - é rápido, grátis e seguro!" />
 </form>
 <script type="text/javascript" src="https://stc.pagseguro.uol.com.br/pagseguro/api/v2/checkout/pagseguro.lightbox.js"></script>
-<!-- FINAL FORMULARIO BOTAO PAGSEGURO --> 
+<!-- FINAL FORMULARIO BOTAO PAGSEGURO -->https://pag.ae/bkxLDHP 
+
+<form id="contact-form" action="//formspree.io/celloguerra@gmail.com" method="post">
+  <input type="text" name="Name" placeholder="Name" required>
+  <input type="email" name="Email" placeholder="Email" required>
+  <textarea name="Message" cols="30" rows="6" placeholder="Message" required></textarea>
+  <!-- CONFIG -->
+  <input class="is-hidden" type="text" name="_gotcha">
+  <input type="hidden" name="_subject" value="Subject">
+  <input type="hidden" name="_cc" value="email@cc.com">
+  <!-- /CONFIG -->
+  <input class="submit" type="submit" value="Send">
+</form>
     </p>
   </div>
 </div>
@@ -67,44 +79,7 @@
 <footer class="footer">
   <div class="container">
     <div class="content has-text-centered">
-      <script src="ENTER ENTIRE API URL HERE" type="text/javascript"></script>
-    <script type="text/javascript">
-    google.load("feeds", "1");
- 
-    function feedLoaded(result) {
-      if (!result.error) {
-        // Grab the container we will put the results into
-        var container = document.getElementById("mybox");
-        container.innerHTML = '';
-        // Check out the result object for a list of properties returned in each entry.
-        // http://code.google.com/apis/ajaxfeeds/documentation/reference.html#JSON
-        for (var i = 0; i < result.feed.entries.length; i++) {
- 
- 
-          var entry = result.feed.entries[i];
-          var div = document.createElement("div");
- 
-var date = new Date(entry.publishedDate);
-  date = date.toDateString().substr(4);
- 
-          div.appendChild(document.createTextNode('This much as of ' + date + ': $' + entry.content));
-          container.appendChild(div);
-        }
-      }
-    }
- 
-    function OnLoad() {
- 
-      var feed = new google.feeds.Feed("https://spreadsheets.google.com/feeds/cells/ENTER-SPREAD-SHEET-KEY-HERE/od6/public/basic?hl=en_US&range=ENTER-CELL-COORDINATE-HERE");
- 
-      feed.includeHistoricalEntries();
-      feed.setNumEntries(1); // maximum entries
- 
-      feed.load(feedLoaded);
-    }
- 
-    google.setOnLoadCallback(OnLoad);
-    </script>
+      budesh
     </div>
   </div>
 </footer>
