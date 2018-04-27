@@ -64,7 +64,7 @@
   <input type='text' style='display:none;' name='xmIwtLD' value='f32c98d3c54755d3314bda3aa2314b211f7b12e8e3c4744f98fd4bd5dce5c72e'/>
   <input type='text' style='display:none;'  name='actionType' value='TGVhZHM='/>
 
-  <input type='text' style='display:none;' name='returnURL' value='https&#x3a;&#x2f;&#x2f;budesh.com.br' /> 
+  <input type='text' style='display:none;' name='returnURL' value='http&#x3a;&#x2f;&#x2f;budesh.com.br' /> 
    <!-- Do not remove this code. -->
   <style>
     tr , td { 
@@ -81,6 +81,27 @@
 
   <tr><td  style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:200px;'>Sobrenome<span style='color:red;'>*</span></td><td style='width:250px;' ><input type='text' style='width:250px;'  maxlength='80' name='Last Name' /></td></tr>
 
+  <tr><td  style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:200px;'>E-mail<span style='color:red;'>*</span></td><td style='width:250px;' ><input type='text' style='width:250px;'  maxlength='100' name='Email' /></td></tr>
+
+  <tr style='display:none;' ><td style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:50%'>Fonte de Cliente potencial</td><td style='width:250px;'>
+    <select style='width:250px;' name='Lead Source'>
+      <option value='-None-'>-None-</option>
+    <option selected value='Publicidade'>Publicidade</option>
+      <option value='Chamada&#x20;Surpresa'>Chamada Surpresa</option>
+      <option value='Refer&ecirc;ncia&#x20;de&#x20;Funcion&aacute;rios'>Refer&ecirc;ncia de Funcion&aacute;rios</option>
+      <option value='Refer&ecirc;ncia&#x20;Externa'>Refer&ecirc;ncia Externa</option>
+      <option value='Armazenamento&#x20;online'>Armazenamento online</option>
+      <option value='Parceiro'>Parceiro</option>
+      <option value='Rela&ccedil;&otilde;es&#x20;P&uacute;blicas'>Rela&ccedil;&otilde;es P&uacute;blicas</option>
+      <option value='Pseud&ocirc;nimo&#x20;de&#x20;e-mail&#x20;de&#x20;vendas'>Pseud&ocirc;nimo de e-mail de vendas</option>
+      <option value='Parceiro&#x20;de&#x20;Semin&aacute;rios'>Parceiro de Semin&aacute;rios</option>
+      <option value='Semin&aacute;rio&#x20;interno'>Semin&aacute;rio interno</option>
+      <option value='Exposi&ccedil;&atilde;o&#x20;Profissional'>Exposi&ccedil;&atilde;o Profissional</option>
+      <option value='Download&#x20;em&#x20;Rede'>Download em Rede</option>
+      <option value='Pesquisa&#x20;de&#x20;Rede'>Pesquisa de Rede</option>
+      <option value='Conversa'>Conversa</option>
+    </select></td></tr>
+
   <tr><td colspan='2' style='text-align:center; padding-top:15px;'>
     <input style='font-size:12px;color:#131307' type='submit' value='Submeter' />
     <input type='reset' style='font-size:12px;color:#131307' value='Reiniciar' />
@@ -88,8 +109,8 @@
   </tr>
    </table>
   <script>
-    var mndFileds=new Array('Company','Last Name');
-    var fldLangVal=new Array('Empresa','Sobrenome');
+    var mndFileds=new Array('Company','Last Name','Email');
+    var fldLangVal=new Array('Empresa','Sobrenome','E-mail');
     var name='';
     var email='';
 
