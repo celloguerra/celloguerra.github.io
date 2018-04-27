@@ -49,110 +49,11 @@
     <span class="upprice">POR APENAS</span><br/>
     <span class="price is-size-1 has-text-weight-bold">R$ 150,00</span>
     <p class="subtitle">
-      <!-- Note :
-   - You can modify the font style and form style to suit your website. 
-   - Code lines with comments ���Do not remove this code���  are required for the form to work properly, make sure that you do not remove these lines of code. 
-   - The Mandatory check script can modified as to suit your business needs. 
-   - It is important that you test the modified form before going live.-->
-<div id='crmWebToEntityForm' style='width:600px;margin:auto;'>
-   <META HTTP-EQUIV ='content-type' CONTENT='text/html;charset=UTF-8'>
-   <form action='https://crm.zoho.com/crm/WebToLeadForm' name=WebToLeads3221572000000160001 method='POST' onSubmit='javascript:document.charset="UTF-8"; return checkMandatory()' accept-charset='UTF-8'>
-
-   <!-- Do not remove this code. -->
-  <input type='text' style='display:none;' name='xnQsjsdp' value='62c652629c05bcebd018798a439951c4d80cf0aacc451776ef7f1b4ad2e6dfc0'/>
-  <input type='hidden' name='zc_gad' id='zc_gad' value=''/>
-  <input type='text' style='display:none;' name='xmIwtLD' value='f32c98d3c54755d3314bda3aa2314b211f7b12e8e3c4744f98fd4bd5dce5c72e'/>
-  <input type='text' style='display:none;'  name='actionType' value='TGVhZHM='/>
-
-  <input type='text' style='display:none;' name='returnURL' value='http&#x3a;&#x2f;&#x2f;budesh.com.br' /> 
-   <!-- Do not remove this code. -->
-  <style>
-    tr , td { 
-      padding:6px;
-      border-spacing:0px;
-      border-width:0px;
-      }
-  </style>
-  <table style='width:600px;background-color:white;color:black'>
-
-  <tr><td colspan='2' style='text-align:left;color:black;font-family:Arial;font-size:14px;'><strong>Teste</strong></td></tr>
-
-  <tr><td  style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:200px;'>Empresa<span style='color:red;'>*</span></td><td style='width:250px;' ><input type='text' style='width:250px;'  maxlength='100' name='Company' /></td></tr>
-
-  <tr><td  style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:200px;'>Sobrenome<span style='color:red;'>*</span></td><td style='width:250px;' ><input type='text' style='width:250px;'  maxlength='80' name='Last Name' /></td></tr>
-
-  <tr><td  style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:200px;'>E-mail<span style='color:red;'>*</span></td><td style='width:250px;' ><input type='text' style='width:250px;'  maxlength='100' name='Email' /></td></tr>
-
-  <tr style='display:none;' ><td style='nowrap:nowrap;text-align:left;font-size:12px;font-family:Arial;width:50%'>Fonte de Cliente potencial</td><td style='width:250px;'>
-    <select style='width:250px;' name='Lead Source'>
-      <option value='-None-'>-None-</option>
-    <option selected value='Publicidade'>Publicidade</option>
-      <option value='Chamada&#x20;Surpresa'>Chamada Surpresa</option>
-      <option value='Refer&ecirc;ncia&#x20;de&#x20;Funcion&aacute;rios'>Refer&ecirc;ncia de Funcion&aacute;rios</option>
-      <option value='Refer&ecirc;ncia&#x20;Externa'>Refer&ecirc;ncia Externa</option>
-      <option value='Armazenamento&#x20;online'>Armazenamento online</option>
-      <option value='Parceiro'>Parceiro</option>
-      <option value='Rela&ccedil;&otilde;es&#x20;P&uacute;blicas'>Rela&ccedil;&otilde;es P&uacute;blicas</option>
-      <option value='Pseud&ocirc;nimo&#x20;de&#x20;e-mail&#x20;de&#x20;vendas'>Pseud&ocirc;nimo de e-mail de vendas</option>
-      <option value='Parceiro&#x20;de&#x20;Semin&aacute;rios'>Parceiro de Semin&aacute;rios</option>
-      <option value='Semin&aacute;rio&#x20;interno'>Semin&aacute;rio interno</option>
-      <option value='Exposi&ccedil;&atilde;o&#x20;Profissional'>Exposi&ccedil;&atilde;o Profissional</option>
-      <option value='Download&#x20;em&#x20;Rede'>Download em Rede</option>
-      <option value='Pesquisa&#x20;de&#x20;Rede'>Pesquisa de Rede</option>
-      <option value='Conversa'>Conversa</option>
-    </select></td></tr>
-
-  <tr><td colspan='2' style='text-align:center; padding-top:15px;'>
-    <input style='font-size:12px;color:#131307' type='submit' value='Submeter' />
-    <input type='reset' style='font-size:12px;color:#131307' value='Reiniciar' />
-      </td>
-  </tr>
-   </table>
-  <script>
-    var mndFileds=new Array('Company','Last Name','Email');
-    var fldLangVal=new Array('Empresa','Sobrenome','E-mail');
-    var name='';
-    var email='';
-
-    function checkMandatory() {
-    for(i=0;i<mndFileds.length;i++) {
-      var fieldObj=document.forms['WebToLeads3221572000000160001'][mndFileds[i]];
-      if(fieldObj) {
-      if (((fieldObj.value).replace(/^\s+|\s+$/g, '')).length==0) {
-       if(fieldObj.type =='file')
-        { 
-         alert('Selecione um arquivo para fazer o upload.'); 
-         fieldObj.focus(); 
-         return false;
-        } 
-      alert(fldLangVal[i] +' não pode ficar em branco.'); 
-              fieldObj.focus();
-              return false;
-      }  else if(fieldObj.nodeName=='SELECT') {
-             if(fieldObj.options[fieldObj.selectedIndex].value=='-None-') {
-        alert(fldLangVal[i] +' não pode ficar em branco.'); 
-        fieldObj.focus();
-        return false;
-         }
-      } else if(fieldObj.type =='checkbox'){
-       if(fieldObj.checked == false){
-        alert('Please accept  '+fldLangVal[i]);
-        fieldObj.focus();
-        return false;
-         } 
-       } 
-       try {
-           if(fieldObj.name == 'Last Name') {
-        name = fieldObj.value;
-          }
-      } catch (e) {}
-        }
-    }
-       }
-     
-</script>
-  </form>
-</div>
+      <form method="POST" action="https://formspree.io/celloguerra@gmail.com">
+  <input type="email" name="email" placeholder="Your email">
+  <textarea name="message" placeholder="Your message"></textarea>
+  <button type="submit">Send</button>
+</form>
     </p>
   </div>
 </div>
