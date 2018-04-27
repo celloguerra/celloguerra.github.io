@@ -9,6 +9,13 @@
 	background: url('images/pexels-photo.jpg') no-repeat center center;
   	background-size: cover;
   	padding-bottom: 0;
+
+}
+@media only screen and (max-width: 600px) {
+
+	#midias-sociais-empreendedoras .hero {
+		height: 30vh;
+	}
 }
 .center {
 	text-align: center;
