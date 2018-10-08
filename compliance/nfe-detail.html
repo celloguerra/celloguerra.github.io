@@ -8,9 +8,11 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
   <script language='javascript'>
              $(document).ready(function(){
-                $('.ui.accordion').accordion('exclusive', false);
+                $('.ui.accordion').accordion({exclusive: false});
                 $('.ui.dropdown').dropdown();
                 $('.ui.checkbox').checkbox("checked");
+                $('.ui.sticky').sticky({context: '#context'});
+;
              });
   </script>
 <style type="text/css">
@@ -50,8 +52,8 @@
 
 <!-- cards -->
  <!-- tabela -->
-  <div class="ui padded two column grid">
-    <div class="thirteen wide column">
+  <div class="ui padded three column grid" id="context"> 
+    <div class="twelve wide column">
       <div class="ui breadcrumb">
   <a href="nfe-list.html " class="section">Notas Fiscais Eletrônicas</a>
   <div class="divider"> / </div>
@@ -63,12 +65,12 @@
         <div class="column">
           <h3>Emitente</h3>
           <div class="ui list">
-            <div class="item">Nome: LOTTERS amp MIRUNA ARAMES LTDA</div>
-            <div class="item">CNPJ: 04229213000140I</div>
-            <div class="item">Endereço: Rua Dona Francisca 6159</div>
-            <div class="item">Localização: Joinville - SC - BRASIL</div>
-            <div class="item">Código Postal: 89219530</div>
-            <div class="item">Telefone: 4734353763</div>
+            <div class="item">Nome: IND. MAQ. MIRUNA LTDA</div>
+            <div class="item">CNPJ: 61090734000101</div>
+            <div class="item">Endereço: Rua Howard A. Acheson Junior 295 -</div>
+            <div class="item">Localização: Cotia - SP - BRASIL</div>
+            <div class="item">Código Postal: 6711280</div>
+            <div class="item">Telefone: 1127110844</div>
 
           </div>
         </div>
@@ -94,32 +96,243 @@
         <div class="ui fitted divider"></div>
   <div class="title">
     <i class="dropdown icon"></i>
+    Dados Gerais
+  </div>
+  <div class="content">
+    <div class="ui equal width form">
+  <div class="fields">
+    <div class="field">
+      <label>Indicador do Emitente</label>
+      <input placeholder="Emissão Própria" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Número</label>
+      <input placeholder="72586" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Série</label>
+      <input placeholder="0" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Data Emissão</label>
+      <input placeholder="30/11/2017" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Data Entrada/Saída</label>
+      <input placeholder="30/11/2017" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Modedlo</label>
+      <input placeholder="55 - NF-e" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Tipo Operação</label>
+      <input placeholder="Saída" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Situação</label>
+      <input placeholder="Autorizada" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>XML de Terceiros</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Forma de Emissão</label>
+      <input placeholder="Normal" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Chave Nota Fiscal Eletrônica</label>
+      <input placeholder="35141061090734000101550000000725861055033876" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Danfe Recebida</label>
+    <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Indicador de Pagamento</label>
+      <input placeholder="Outros" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Sinal Suframa</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Recebido XML</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Impressão</label>
+      <input placeholder="Erro Impressão" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Tipo Impressão</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Tentativas Impressão</label>
+      <input placeholder="5" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Situação Email</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Situação Integração</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Chave CTe</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Nota Fiscal de Empenho</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>NFe de Legado</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Conta Contábil</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Atividade do Participante</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Motivo de Desoneração do ICMS</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Calcula ICMS-ST</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Operação com Consumidor final</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>URL DANFE NFC-e</label>
+      <input placeholder="Não" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Atividade do Participante</label>
+      <input placeholder="" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+    <label>QR-Code impresso no DANFE NFC-e (Máximo de 600 caracteres)</label>
+    <textarea rows="2"></textarea>
+  </div>
+  </div>
+</div>
+  </div>
+  <div class="ui fitted divider"></div>
+  <div class="title">
+    <i class="dropdown icon"></i>
     Totalizadores
   </div>
   <div class="content">
     <div class="ui equal width form">
   <div class="fields">
     <div class="field">
-      <label>Username</label>
-      <input placeholder="Username" type="text">
+      <label>Valor Total NF</label>
+      <input placeholder="2.400,00" readonly="" type="text">
     </div>
     <div class="field">
-      <label>Password</label>
-      <input type="password">
+      <label>Valor Total Desconto</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Total Mercadoria</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Frete</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Seguro</label>
+      <input placeholder="0,00" readonly="" type="text">
     </div>
   </div>
   <div class="fields">
     <div class="field">
-      <label>First name</label>
-      <input placeholder="First Name" type="text">
+      <label>Valor Total NF</label>
+      <input placeholder="2.400,00" readonly="" type="text">
     </div>
     <div class="field">
-      <label>Middle name</label>
-      <input placeholder="Middle Name" type="text">
+      <label>Valor Total Desconto</label>
+      <input placeholder="0,00" readonly="" type="text">
     </div>
     <div class="field">
-      <label>Last name</label>
-      <input placeholder="Last Name" type="text">
+      <label>Valor Total Mercadoria</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Frete</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Seguro</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Valor Total NF</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Total Desconto</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Total Mercadoria</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Frete</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Seguro</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+  </div>
+  <div class="fields">
+    <div class="field">
+      <label>Valor Total NF</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Total Desconto</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Total Mercadoria</label>
+      <input placeholder="2.400,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Frete</label>
+      <input placeholder="0,00" readonly="" type="text">
+    </div>
+    <div class="field">
+      <label>Valor Seguro</label>
+      <input placeholder="0,00" readonly="" type="text">
     </div>
   </div>
 </div>
@@ -127,18 +340,35 @@
   <div class="ui fitted divider"></div>
   <div class="title">
     <i class="dropdown icon"></i>
-    Informações
-  </div>
-  <div class="content">
-    <p>There are many breeds of dogs. Each breed varies in size and temperament. Owners often select a breed of dog that they find to be compatible with their own lifestyle and desires from a companion.</p>
-  </div>
-  <div class="ui fitted divider"></div>
-  <div class="title">
-    <i class="dropdown icon"></i>
     Itens
   </div>
   <div class="content">
-    <p>Three common ways for a prospective owner to acquire a dog is from pet shops, private owners, or shelters.</p>  
+    <table class="ui basic table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>John</td>
+      <td>Approved</td>
+      <td>None</td>
+    </tr>
+    <tr>
+      <td>Jamie</td>
+      <td>Approved</td>
+      <td>Requires call</td>
+    </tr>
+    <tr>
+      <td>Jill</td>
+      <td>Denied</td>
+      <td>None</td>
+    </tr>
+  </tbody>
+</table>  
   </div>
   <div class="ui fitted divider"></div>
   <div class="title">
@@ -161,13 +391,13 @@
 
 </div>
 <!-- sidebar -->
-<div class="three wide column">
-     
-      <div style="height: 30px;"></div>
+<div class="four wide column">
+  <div class="ui sticky">
+    <div style="height: 20px;"></div>
 
 <div class="ui vertical fluid menu">
   <div class="item">
-    <div class="header">Valor Total: R$ 2400,00</div>
+    <div class="ui large header">Valor: R$ 2400,00</div>
     
   </div>
 
@@ -179,9 +409,10 @@
   <div class="item">
     <div class="header">Ações</div>
     <div class="menu">
-      <a class="item">Cancelamento</a>
-      <a class="item">Correção</a>
-      <a class="item">Inutilização</a>
+      <a class="item">Editar</a>
+      <a class="item">Cancelar</a>
+      <a class="item">Corrigir</a>
+      <a class="item">Inutilizar</a>
     </div>
   </div>
   <a class="item">
@@ -192,7 +423,11 @@
   </a>
 
 </div>
-</div>      
+  </div>
+</div>
+
+
+
                
 </body>
 </html>
