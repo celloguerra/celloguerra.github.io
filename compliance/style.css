@@ -1,0 +1,14 @@
+/*Globais*/
+a {color: #000}
+.ui.label {width:13em;}
+
+/*Menu Superior*/
+.ui.menu {border-radius:0;}
+
+/*NF-e Details*/
+.ui.form input {color: rgba(0,0,0,.95);}
+.ui.styled.accordion .title {font-size: 1.1em; color: rgba(0,0,0,.95);}
+.ui.styled.accordion .active.title {background: #ffee; color: rgba(0,0,0,.95);}
+.ui.flated.message {background-color: #db2828!important;border-color: #db2828!important;color: #fff!important;}
+.scrolling-wrapper {overflow-x: scroll;overflow-y: hidden;white-space: nowrap;}
+.ui.feed>.event>.content .meta {margin: -0.5em 0 1em;}

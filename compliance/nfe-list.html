@@ -4,6 +4,7 @@
   <title>List de NF-e's - Comliance Fiscal</title>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.css" />
+  <link rel="stylesheet" href="style.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.9/semantic.min.js"></script>
   <script language='javascript'>
@@ -13,9 +14,6 @@
                 $('.ui.checkbox').checkbox("checked");
              });
   </script>
-<style type="text/css">
-  .ui.menu {border-radius:0;}
-</style>
 </head>
 <body>
  <div>
@@ -54,16 +52,16 @@
     <div class="thirteen wide column">
       <h2 class="ui header">Nota Fiscal Eletrônica (NF-e)</h2>
       
-  <table class="ui fixed single line striped very basic selectable table">
+  <table class="ui fixed single line striped very basic table">
   <thead>
     <tr>
       <th>Emissão</th>
       <th>Documento</th>
       <th>Série</th>
-      <th>Status</th>
-      <th>Destinatário</th>
-      <th class="four wide">Razão Social</th>
-      <th >UF</th>
+      <th class="two wide">Status</th>
+      <th class="two wide">Destinatário</th>
+      <th class="six wide">Razão Social</th>
+      <th>UF</th>
       <th class="center aligned">Operação</th>
       <th class="right aligned">Valor</th>
     </tr>
@@ -73,7 +71,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -81,21 +79,21 @@
       <td class="right aligned">R$1,00</td>
     </tr>
     <tr>
-      <td class="selectable"><a href="nfe-detail.html"> 30/11/2017</a></td>
-      <td class="selectable"><a href="nfe-detail.html">72586</a></td>
-      <td class="selectable"><a href="nfe-detail.html">0</a></td>
-      <td class="selectable negative single line"><a href="nfe-detail.html"><i class="icon close"></i> Erro Integração</a></td>
-      <td class="selectable"><a href="nfe-detail.html">04.229.213/000140</a></td>
-      <td class="selectable" title="LOTTERS MIRUNA ARAMES LTDA"><a href="nfe-detail.html">LOTTERS MIRUNA ARAMES LTDA</a></td>
-      <td class="selectable"><a href="nfe-detail.html">RJ</a></td>
-      <td class="selectable center aligned"><a href="nfe-detail.html">Saída</a></td>
-      <td class="selectable right aligned"><a href="nfe-detail.html">R$2400.00</a></td>
+      <td><a href="nfe-detail.html"> 30/11/2017</a></td>
+      <td ><a href="nfe-detail.html">72586</a></td>
+      <td ><a href="nfe-detail.html">44</a></td>
+      <td><a href="nfe-detail.html" class="ui red label"><i class="x icon"></i>Erro ao Imprimir</a></td>
+      <td ><a href="nfe-detail.html">04.229.213/000140</a></td>
+      <td  title="LOTTERS MIRUNA ARAMES LTDA"><a href="nfe-detail.html">LOTTERS MIRUNA ARAMES LTDA</a></td>
+      <td ><a href="nfe-detail.html">RJ</a></td>
+      <td class=" center aligned"><a href="nfe-detail.html">Saída</a></td>
+      <td class=" right aligned"><a href="nfe-detail.html">R$2400.00</a></td>
     </tr>
     <tr>
       <td>20/11/2017</td>
       <td>268</td>
       <td>5</td>
-      <td class="warning single line"><i class="attention icon"></i> Aguardando Retorno</td>
+      <td><a class="ui yellow label"><i class="exclamation circle icon"></i>Aguardando Retorno</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -106,7 +104,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -117,7 +115,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -128,7 +126,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -139,7 +137,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -150,7 +148,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -161,7 +159,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -172,7 +170,7 @@
       <td>20/11/2017</td>
       <td>268</td>
       <td>5</td>
-      <td class="warning single line"><i class="attention icon"></i> Aguardando Retorno</td>
+      <td><a class="ui yellow label"><i class="exclamation circle icon"></i>Aguardando Retorno</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -183,7 +181,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -194,7 +192,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -205,7 +203,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -216,7 +214,7 @@
       <td>18/01/2018</td>
       <td>71795</td>
       <td>44</td>
-      <td class="positive single line"><i class="icon checkmark"></i>Autorizado</td>
+      <td><a class="ui green label"><i class="icon checkmark"></i>Emissão Autorizada</a></td>
       <td>61.090.734/000101</td>
       <td title="NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL">NF-E EMITIDA EM AMBIENTE DE HOMOLOGACAO - SEM VALOR FISCAL</td>
       <td>RJ</td>
@@ -227,7 +225,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -238,7 +236,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -249,7 +247,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -260,7 +258,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -271,7 +269,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
@@ -282,7 +280,7 @@
       <td>30/11/2017</td>
       <td>72586</td>
       <td>0</td>
-      <td class="negative single line"><i class="icon close"></i> Erro Integração</td>
+      <td><a class="ui red label"><i class="x icon"></i>Erro Integração</a></td>
       <td>04.229.213/000140</td>
       <td title="LOTTERS MIRUNA ARAMES LTDA">LOTTERS MIRUNA ARAMES LTDA</td>
       <td>RJ</td>
