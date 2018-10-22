@@ -1,6 +1,8 @@
 /*Globais*/
 a {color: #000}
 .ui.label {width:13em;}
+i.disabled.icon {opacity: 0.15!important;}
+.top-table{background-color: #FAFAFA; border-bottom: 1px solid #ebebeb; padding: 10px 20px !important ;}
 
 /*Menu Superior*/
 .ui.menu {border-radius:0;}
