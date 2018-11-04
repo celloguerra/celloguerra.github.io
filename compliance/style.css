@@ -2,8 +2,19 @@
 a {color: #000}
 .ui.label {width:13em;}
 i.disabled.icon {opacity: 0.15!important;}
-.top-table{background-color: #FAFAFA; border-bottom: 1px solid #ebebeb; padding: 10px 20px !important ;}
+.top-table{background-color: #FAFAFA!important;margin: 0px!important; padding: 15px!important}
+h2{margin-bottom: 0!important; padding-bottom: 0!important;}
+#fixed-title .dropdown{ margin-left: 20px; }
+#fixed-title .ui.search .prompt { border-radius: .3em; }
 
+.top-table .ui.label {
+    width: 30px;
+}
+.ui.labeled.button:not([class*="left labeled"])>.label{border-radius:1;}
+.ui.floating.label {
+    top: -1em;
+    left: 81%;
+ 
 /*Menu Superior*/
 .ui.menu {border-radius:0;}
 
