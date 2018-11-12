@@ -16,6 +16,13 @@
                 $('.activating.element').popup();
                 $('.main.menu').visibility({type: 'fixed'});
                 $('.overlay').visibility({type: 'fixed',offset: 80});
+                $("#test").click(function(){$(".test").modal('show');});
+                $(".test").modal({closable: true});
+                $('.inline.icon')
+  .popup({
+    inline: true
+  })
+;
              });
   </script>
 </head>
@@ -55,8 +62,9 @@
     <!-- begin search -->
   <div class="ui search">
   <div class="ui icon input">
-    <input class="prompt" type="text" placeholder="Pesquise">
-    <i class="search icon"></i>
+    <input type="text" placeholder="Pesquise...">
+  <i class=" sliders horizontal icon link icon" id="test" data-content="Pesquisa Avançada"></i>
+    
   </div>
   <div class="results"></div>
 </div>
@@ -498,6 +506,87 @@
   </tfoot>
 </table>
 </div>
+</div>    <div class="ui modal test">
+  <i class="close icon"></i>
+  <div class="header">
+    Pesquisa Avançada
+  </div>
+  <div class="content">
+    <form class="ui equal width form">
+  <div class="fields">
+    <div class="field">
+      <label>Nº Documento Inicial</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Nº Documento Final</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Série</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Data Emissão Inicial</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+   <div class="field">
+      <label>Data Emissão Final</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+</div>
+<div class="fields">
+    <div class="field">
+      <label>Tipo Documento</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Tipo Emitente</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Tipo</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Forma Emissão</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+   <div class="field">
+      <label>Modelo do Documento</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+</div>
+<div class="fields">
+    <div class="field">
+      <label>CNPJ/CPF</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Impressora</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Usuário</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+    <div class="field">
+      <label>Chave de Acesso</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+   <div class="field">
+      <label>Danfe Impresso</label>
+      <input type="text" name="" maxlength="16" placeholder="">
+    </div>
+</div>
+</form>
+  </div>
+  <div class="actions">
+    <div class="ui positive right labeled icon button">
+      Pesqisar
+      <i class="search icon"></i>
+    </div>
+  </div>
 </div>
 
 </body>
