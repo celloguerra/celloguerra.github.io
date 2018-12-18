@@ -1,27 +1,24 @@
 /*Globais*/
-a {color: #000}
-.ui.label {width:13em;}
+.disabled {opacity: 100!important; background-color: #F2F2F2!important;}
+.gray {opacity: 0.3!important;}
 i.disabled.icon {opacity: 0.15!important;}
 .top-table{background-color: #FAFAFA!important;margin: 0px!important; padding: 15px!important}
 h2{margin-bottom: 0!important; padding-bottom: 0!important;}
 #fixed-title .dropdown{ margin-left: 20px; }
 #fixed-title .ui.search .prompt { border-radius: .3em; }
 
-.top-table .ui.label {
-    width: 30px;
-}
 .ui.labeled.button:not([class*="left labeled"])>.label{border-radius:1;}
-.ui.floating.label {
-    top: -1em;
-    left: 81%;
+#filtered{ top: -1em; left: 81%;}
  
 /*Menu Superior*/
 .ui.menu {border-radius:0;}
 
 /*NF-e Details*/
+#detail{ top: 33.5em!important; left:-10%;}
 .ui.form input {color: rgba(0,0,0,.95);}
 .ui.styled.accordion .title {font-size: 1.1em; color: rgba(0,0,0,.95);}
 .ui.styled.accordion .active.title {background: #ffee; color: rgba(0,0,0,.95);}
 .ui.flated.message {background-color: #db2828!important;border-color: #db2828!important;color: #fff!important;}
+.ui.red.message .header {color: #fff!important;}
 .scrolling-wrapper {overflow-x: scroll;overflow-y: hidden;white-space: nowrap;}
 .ui.feed>.event>.content .meta {margin: -0.5em 0 1em;}
