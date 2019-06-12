@@ -10,7 +10,7 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="nfe-list.svg"
+   sodipodi:docname="nfe-list-menu-mensageria.svg"
    inkscape:version="0.92.3 (2405546, 2018-03-11)"
    id="svg8"
    version="1.1"
@@ -631,9 +631,9 @@
      showgrid="false"
      inkscape:current-layer="layer1"
      inkscape:document-units="px"
-     inkscape:cy="798.061"
-     inkscape:cx="149.60937"
-     inkscape:zoom="2.1448688"
+     inkscape:cy="815.17613"
+     inkscape:cx="-51.593545"
+     inkscape:zoom="1.8911331"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
      borderopacity="1.0"
@@ -648,7 +648,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title />
+        <dc:title></dc:title>
         <dc:creator>
           <cc:Agent>
             <dc:title>Marcelo GUerra</dc:title>
@@ -2198,7 +2198,7 @@
          id="path53068" />
     </g>
     <a
-       xlink:href="nfe-detail-mensageria.svg"
+       xlink:href="nfe-detail.svg#my-text"
        id="a979"
        transform="translate(19.718682,-0.26382426)">
       <text
@@ -2653,6 +2653,68 @@
            y="220.16855"
            style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:2.82222223px;font-family:lato;-inkscape-font-specification:lato;text-align:end;text-anchor:end;fill:#333333;stroke-width:0.26458332">Ajuda      Enviar feedback      Privacidade      Termos</tspan></text>
     </g>
+    <path
+       style="opacity:1;vector-effect:none;fill:#ffffff;fill-opacity:1;fill-rule:evenodd;stroke:#000000;stroke-width:0.12887512;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:3.79999995;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:0.21395347"
+       d="m 58.791322,73.570193 -1.472221,1.931505 H 41.737462 c -0.680977,0 -1.228832,0.555927 -1.228832,1.246284 v 39.244598 c 0,0.69035 0.547855,1.24576 1.228832,1.24576 h 34.702356 c 0.680976,0 1.22935,-0.55541 1.22935,-1.24576 V 76.747982 c 0,-0.690357 -0.548374,-1.246284 -1.22935,-1.246284 H 60.068729 Z"
+       id="rect5069"
+       inkscape:connector-curvature="0"
+       sodipodi:nodetypes="ccsssssssscc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:2;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;letter-spacing:0px;word-spacing:0px;writing-mode:lr-tb;text-anchor:start;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.26458332"
+       x="-51.507599"
+       y="52.17635"
+       id="text4206-7-1-2"><tspan
+         sodipodi:role="line"
+         id="tspan4204-7-2-8"
+         x="-51.507599"
+         y="52.17635"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332">25/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="62.272846"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4208-6-2-2">23/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="72.369347"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4210-4-6-9">20/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="82.465843"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4212-3-9-9">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="92.562347"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4214-0-1-6">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="102.65884"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4216-3-0-0">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="112.75535"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4218-0-4-2">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="122.85184"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4220-9-2-7">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="132.94835"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4222-2-7-6">18/01/2018</tspan><tspan
+         sodipodi:role="line"
+         x="-51.507599"
+         y="143.04486"
+         style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-size:3.17499995px;line-height:3.18000007;font-family:lato;-inkscape-font-specification:'lato, Normal';font-variant-ligatures:normal;font-variant-caps:normal;font-variant-numeric:normal;font-feature-settings:normal;text-align:start;writing-mode:lr-tb;text-anchor:start;stroke-width:0.26458332"
+         id="tspan4224-5-4-1">17/01/2018</tspan></text>
   </g>
   <flowRoot
      xml:space="preserve"
