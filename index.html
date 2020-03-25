@@ -268,23 +268,21 @@
                 </div>
                 <div class="col-sm-4">
                     <div class="form-group">
-                        <label for="form_phone">Phone</label>
-                        <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone number">
+                        <label for="form_phone">Telefone (*)</label>
+                        <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone number" required="required">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="form_interesses">Interesses</label>
+                        <input id="form_interesses" type="text" name="interesses" class="form-control" placeholder="Please enter your phone number">
                         <div class="help-block with-errors"></div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="clearfix"></div>
-
         <div class="row">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label for="form_message">Message *</label>
-                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="send a message."></textarea>
-                    <div class="help-block with-errors"></div>
-                </div>
-            </div>
             <div class="col-md-12">
                 <input type="submit" class="btn btn-warning btn-send" value="Send message" id="my-form-button">
                  <p id="my-form-status"></p>
