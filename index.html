@@ -240,13 +240,51 @@
                 </div>
                 <div class="row">
                  <div class="col-lg-12 text-center">   
-                    <script charset="utf-8" type="text/javascript" src="//js.hsforms.net/forms/shell.js"></script>
-                    <script>
-                        hbspt.forms.create({
-                        portalId: "7365729",
-                        formId: "96c824a8-4d75-4d0d-8ccf-2553d570ebec"
-                        });
-                    </script>
+                    <div class="container-fluid bg-light py-3">
+    <form id="my-form"  action="https://formspree.io/xwkqyzog" method="POST" role="form">
+        <div class="messages"></div>
+        <div class="controls">
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="form_name">Nome (*)</label>
+                        <input id="form_name" type="text" name="surname" class="form-control" required="required" data-error="name is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="form_email">Email *</label>
+                        <input id="form_email" type="email" name="email" class="form-control" placeholder="Please enter your email *" required="required" data-error="Valid email is required.">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <label for="form_phone">Phone</label>
+                        <input id="form_phone" type="tel" name="phone" class="form-control" placeholder="Please enter your phone number">
+                        <div class="help-block with-errors"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="form_message">Message *</label>
+                    <textarea id="form_message" name="message" class="form-control" placeholder="Message for me *" rows="4" required="required" data-error="send a message."></textarea>
+                    <div class="help-block with-errors"></div>
+                </div>
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-warning btn-send" value="Send message" id="my-form-button">
+                 <p id="my-form-status"></p>
+            </div>
+        </div>
+    </form>
+</div>
                 </div>
               </div>      
                 </div>
@@ -267,5 +305,54 @@
         <!-- Start of HubSpot Embed Code -->
         <script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/7365729.js"></script>
         <!-- End of HubSpot Embed Code -->
+        <!-- Place this script at the end of the body tag -->
+
+<script>
+  window.addEventListener("DOMContentLoaded", function() {
+
+    // get the form elements defined in your form HTML above
+    
+    var form = document.getElementById("my-form");
+    var button = document.getElementById("my-form-button");
+    var status = document.getElementById("my-form-status");
+
+    // Success and Error functions for after the form is submitted
+    
+    function success() {
+      form.reset();
+      button.style = "display: none ";
+      status.innerHTML = "Thanks!";
+    }
+
+    function error() {
+      status.innerHTML = "Oops! There was a problem.";
+    }
+
+    // handle the form submission event
+
+    form.addEventListener("submit", function(ev) {
+      ev.preventDefault();
+      var data = new FormData(form);
+      ajax(form.method, form.action, data, success, error);
+    });
+  });
+  
+  // helper function for sending an AJAX request
+
+  function ajax(method, url, data, success, error) {
+    var xhr = new XMLHttpRequest();
+    xhr.open(method, url);
+    xhr.setRequestHeader("Accept", "application/json");
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return;
+      if (xhr.status === 200) {
+        success(xhr.response, xhr.responseType);
+      } else {
+        error(xhr.status, xhr.response, xhr.responseType);
+      }
+    };
+    xhr.send(data);
+  }
+</script>
     </body>
 </html>
