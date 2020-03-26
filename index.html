@@ -297,7 +297,8 @@
                  
                 <br/>
                 <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="my-form-button">
-                 <p id="my-form-status"></p>
+                <div class="alert alert-success" role="alert" id="sucesso"><p id="my-form-status"></p></div>
+                <div class="alert alert-danger" role="alert" id="erro"><p id="my-form-status"></p></div>
             </div>
         </div>
     </form>
@@ -332,16 +333,20 @@
     var form = document.getElementById("my-form");
     var button = document.getElementById("my-form-button");
     var status = document.getElementById("my-form-status");
+    var sucesso = document.getElementById("sucesso");
+    var erro = document.getElementById("erro");
 
     // Success and Error functions for after the form is submitted
     
     function success() {
       form.reset();
       button.style = "display: none ";
+      sucesso.style = "display: block!important";
       status.innerHTML = "Funcionou!";
     }
 
     function error() {
+      erro.style = "display: block!important";
       status.innerHTML = "Oops! There was a problem.";
     }
 
