@@ -235,7 +235,7 @@
                     <div class="col-lg-12 text-center">
                         <h2 class="mt-0">Cadastre-se e ganhe uma entrevista gratuita!</h2>
                         <hr class="divider my-4" />
-                        <p class="text-muted mb-5">Preencha o formulário abaixo que entraremos em contato para marcar sua entrevista gratuita e sem compormisso. </p>
+                        <p class="text-muted mb-5">Preencha o formulário abaixo que entraremos em contato para marcar sua entrevista sem compormisso. </p>
                     </div>
                 </div>
                 <div class="row">
@@ -297,7 +297,7 @@
                  
                 <br/>
                 <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="my-form-button">
-                 <p id="my-form-status"></p>
+                 <div id="sucess"><p id="my-form-status"></p></div>
             </div>
         </div>
     </form>
@@ -332,13 +332,15 @@
     var form = document.getElementById("my-form");
     var button = document.getElementById("my-form-button");
     var status = document.getElementById("my-form-status");
+    var sucess = document.getElementById("my-form-sucess");
 
     // Success and Error functions for after the form is submitted
     
     function success() {
       form.reset();
       button.style = "display: none ";
-      status.innerHTML = "Thanks!";
+      sucess.style = "display: block";
+      status.innerHTML = "Funcionou!";
     }
 
     function error() {
