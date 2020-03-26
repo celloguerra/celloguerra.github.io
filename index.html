@@ -297,7 +297,7 @@
                  
                 <br/>
                 <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="my-form-button">
-                 <div id="sucess"><p id="my-form-status"></p></div>
+                 <div id="uau"><p id="my-form-status"></p></div>
             </div>
         </div>
     </form>
@@ -332,14 +332,14 @@
     var form = document.getElementById("my-form");
     var button = document.getElementById("my-form-button");
     var status = document.getElementById("my-form-status");
-    var sucess = document.getElementById("my-form-sucess");
+    var uau = document.getElementById("my-form-sucess");
 
     // Success and Error functions for after the form is submitted
     
     function success() {
       form.reset();
       button.style = "display: none ";
-      sucess.style = "display: block";
+      uau.style = "background-color:#ddd;";
       status.innerHTML = "Funcionou!";
     }
 
