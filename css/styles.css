@@ -10069,7 +10069,7 @@ header.masthead h1 {
     padding-bottom: 0;
   }
   header.masthead p {
-    font-size: 1.15rem;
+    font-size: 1.55rem;
   }
   header.masthead h1 {
     font-size: 3rem;
@@ -10077,7 +10077,7 @@ header.masthead h1 {
 }
 @media (min-width: 1200px) {
   header.masthead h1 {
-    font-size: 3.5rem;
+    font-size: 4.5rem;
   }
 }
 
