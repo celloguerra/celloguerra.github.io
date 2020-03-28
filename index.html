@@ -235,13 +235,13 @@
                     <div class="col-lg-12 text-center">
                         <h2 class="mt-0">Cadastre-se e ganhe uma entrevista gratuita!</h2>
                         <hr class="divider my-4" />
-                        <p class="text-muted mb-5">Preencha o formulário abaixo que entraremos em contato para marcar sua entrevista gratuita e sem compormisso. </p>
+                        <p class="text-muted mb-5">Preencha o formulário abaixo que entraremos em contato para marcar sua entrevista sem compormisso. </p>
                     </div>
                 </div>
                 <div class="row">
                  <div class="col-lg-12 ">   
                     <div class="container-fluid py-3">
-        <form id="my-form"  action="https://formspree.io/xwkqyzog" method="POST" role="form">
+        <form id="register"  action="https://formspree.io/xwkqyzog" method="POST" role="form">
         <div class="controls">
             <div class="row">
                 <div class="col-sm-6">
@@ -296,8 +296,8 @@
                 <small class="form-text text-muted">A DesignCoaching tem o compromisso de proteger e respeitar sua privacidade e nós usaremos suas informações pessoais somente para administrar sua conta e fornecer os produtos e serviços que você nos solicitou. Ocasionalmente, gostaríamos de contatá-lo sobre os nossos produtos e serviços, também sobre outros assuntos que possam ser do seu interesse. Se você concorda em ser contatado com essa finalidade, marque acima para nos informar qual a forma de contato que você gostaria. </small>
                  
                 <br/>
-                <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="my-form-button">
-                 <p id="my-form-status"></p>
+                <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="register-button">
+                 <p id="register-status"></p>
             </div>
         </div>
     </form>
@@ -329,9 +329,9 @@
 
     // get the form elements defined in your form HTML above
     
-    var form = document.getElementById("my-form");
-    var button = document.getElementById("my-form-button");
-    var status = document.getElementById("my-form-status");
+    var form = document.getElementById("register");
+    var button = document.getElementById("register-button");
+    var status = document.getElementById("register-status");
 
     // Success and Error functions for after the form is submitted
     
