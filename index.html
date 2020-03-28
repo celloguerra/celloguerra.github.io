@@ -297,8 +297,9 @@
                  
                 <br/>
                 <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="register-button">
-                 <p id="register-status"></p>
-            </div>
+                <div class="alert alert-success" role="alert" id="register-status">
+                    <i class="fas fa-thumbs-up"></i> É isso aí. Muito obrigado por se cadastrar. Em breve você receberá um email de confirmação com todos os detalhes da sua entrevista. </div>
+                </div>
         </div>
     </form>
 </div>
@@ -338,7 +339,7 @@
     function success() {
       form.reset();
       button.style = "display: none ";
-      status.innerHTML = "Thanks!";
+      status.style = "display:block!important";
     }
 
     function error() {
