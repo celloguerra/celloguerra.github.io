@@ -297,11 +297,12 @@
                  
                 <br/>
                 <input type="submit" class="btn btn-primary btn-xl btn-send" value="Cadastrar" id="register-button">
-                <div class="alert alert-success" role="alert" id="register-status">
-                    <i class="fas fa-thumbs-up fa-lg"></i> Muito obrigado por se cadastrar. Em breve você receberá um email com todos os detalhes da sua entrevista. </div>
+                <div class="alert alert-success" role="alert" id="register-sucess">
+                    <i class="fas fa-thumbs-up fa-lg"></i> Muito obrigado por se cadastrar. Em breve você receberá um email com todos os detalhes da sua entrevista. 
                 </div>
-                <div class="alert alert-danger" role="alert" id="register-status">
+                <div class="alert alert-danger" role="alert" id="register-error">
                     <i class="fas fa-thumbs-down fa-lg"></i> Opsss! Alguma coisa deu errado. Verifique os campos e tente novamente. </div>
+                </div>
                 </div>
         </div>
     </form>
@@ -335,18 +336,19 @@
     
     var form = document.getElementById("register");
     var button = document.getElementById("register-button");
-    var status = document.getElementById("register-status");
+    var yes = document.getElementById("register-sucess");
+    var no = document.getElementById("register-error");
 
     // Success and Error functions for after the form is submitted
     
     function success() {
       form.reset();
       button.style = "display: none ";
-      status.style = "display:block!important";
+      yes.style = "display:block!important";
     }
 
     function error() {
-      status.innerHTML = "Oops! There was a problem.";
+    no.style = "display:block!important";
     }
 
     // handle the form submission event

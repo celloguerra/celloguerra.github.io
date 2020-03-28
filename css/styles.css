@@ -2,7 +2,7 @@
 /*! Customizações */
 a.navbar-brand img {filter: invert(100%) sepia(1%) saturate(7483%) hue-rotate(23deg) brightness(120%) contrast(100%);}
 p.mb-0{opacity: 0.5!important;}
-#sucesso, #erro{display: none;}
+#register-sucess, #register-sucess{display: none;}
 /*!
 * Start Bootstrap - Creative v6.0.0 (https://startbootstrap.com/themes/creative)
 * Copyright 2013-2020 Start Bootstrap
