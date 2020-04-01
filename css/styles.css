@@ -10087,6 +10087,7 @@ header.masthead h1 {
 #portfolio .container-fluid .portfolio-box, #portfolio .container-sm .portfolio-box, #portfolio .container-md .portfolio-box, #portfolio .container-lg .portfolio-box, #portfolio .container-xl .portfolio-box {
   position: relative;
   display: block;
+  background-color:rgba(244, 98, 58, 0.5) ;
 }
 #portfolio .container-fluid .portfolio-box .portfolio-box-caption, #portfolio .container-sm .portfolio-box .portfolio-box-caption, #portfolio .container-md .portfolio-box .portfolio-box-caption, #portfolio .container-lg .portfolio-box .portfolio-box-caption, #portfolio .container-xl .portfolio-box .portfolio-box-caption {
   display: flex;
@@ -10098,8 +10099,7 @@ header.masthead h1 {
   position: absolute;
   bottom: 0;
   text-align: center;
-  background-color:rgba(244, 98, 58, 0.5) ;
-  opacity: 0;
+  opacity: 1;
   color: #fff;
   text-align: center;
 }
