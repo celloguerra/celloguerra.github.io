@@ -10111,13 +10111,8 @@ header.masthead h1 {
   font-size: 1.8rem;
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption {
-  opacity: 1;
-  transition: all .2s ease-in-out;
-  -webkit-transition: all .2s ease-in-out;
-   -moz-transition: all .2s ease-in-out;
-   -o-transition: all .2s ease-in-out;
-  transform: translateX(0);
-   -webkit-transform: translateX(0);
+  opacity: 0.3;
+  background-color:rgba(244, 98, 58, 0.5) ;
 }
 
 .text-white-75 {
