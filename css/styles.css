@@ -10111,7 +10111,7 @@ header.masthead h1 {
   font-size: 1.8rem;
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption {
-  opacity: 0.3;
+  opacity:1;
   background-color:rgba(244, 98, 58, 0.5) ;
 }
 
