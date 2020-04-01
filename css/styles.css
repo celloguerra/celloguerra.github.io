@@ -10112,8 +10112,12 @@ header.masthead h1 {
 }
 #portfolio .container-fluid .portfolio-box:hover .portfolio-box-caption, #portfolio .container-sm .portfolio-box:hover .portfolio-box-caption, #portfolio .container-md .portfolio-box:hover .portfolio-box-caption, #portfolio .container-lg .portfolio-box:hover .portfolio-box-caption, #portfolio .container-xl .portfolio-box:hover .portfolio-box-caption {
   opacity: 1;
-  background-color: bisque;
-  transition: opacity 0.25s ease;
+  transition: all .2s ease-in-out;
+  -webkit-transition: all .2s ease-in-out;
+   -moz-transition: all .2s ease-in-out;
+   -o-transition: all .2s ease-in-out;
+  transform: translateX(0);
+   -webkit-transform: translateX(0);
 }
 
 .text-white-75 {
