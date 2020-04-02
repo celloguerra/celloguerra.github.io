@@ -10098,8 +10098,8 @@ header.masthead h1 {
   position: absolute;
   bottom: 0;
   text-align: center;
-  background: rgb(0,0,0);
-  background: linear-gradient(180deg, rgba(0,0,0,0.7710434515603116) 0%, rgba(0,0,0,0) 100%);
+  background: rgb(92,77,66);
+background: linear-gradient(180deg, rgba(92,77,66,0.7822479333530288) 0%, rgba(92,77,66,0) 100%);
   opacity: 1;
   color: #fff;
   text-align: center;
