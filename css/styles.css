@@ -10058,14 +10058,14 @@ hr.light {
 header.masthead {
   padding-top: 10rem;
   padding-bottom: calc(10rem - 4.5rem);
-  background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url("../assets/img/bg-masthead2.jpg");
+  background: url("../assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg");
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: scroll;
   background-size: cover;
 }
 header.masthead h1 {
-  font-size: 2.25rem;
+  font-size: 2.25rem!important;
 }
 @media (min-width: 992px) {
   header.masthead {
