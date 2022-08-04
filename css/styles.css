@@ -10,7 +10,7 @@ a {
 }
 a:hover {
   color: #942304;
-  text-decoration: underline;
+  text-decoration: none;
 }
 header.masthead {
   background: url("../assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg");
