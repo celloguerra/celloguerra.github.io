@@ -6,11 +6,11 @@ body {
   -moz-background-size: cover;
   background-size: cover;
   -o-background-size: cover;
-  font-family: 'Poppins', sans-serif !important;
 }
 
-p{font-size: .8em !important;}
-h4 {font-size: 1em !important; margin-bottom: 10px !important;}
+h1{font-family: 'Poppins', sans-serif !important;}
+p{font-family: 'Lato', sans-serif; font-size: .9em !important;}
+h4 {font-family: 'Poppins', sans-serif !important; font-size: 1em !important; margin-bottom: 10px !important;}
 .btn {margin-bottom: 15px;}
 .card-title{font-weight: 700;}
 .card-footer{background-color: transparent !important; border-top: 0;font-size: .9em !important; }
