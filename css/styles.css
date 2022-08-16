@@ -10,6 +10,7 @@ body {
 }
 
 p{font-size: .8em !important;}
-h4 {font-size: 1em !important;}
+h4 {font-size: 1em !important; margin-bottom: 10px !important;}
 .btn {margin-bottom: 15px;}
 .card-title{font-weight: 700;}
+.card-footer{background-color: transparent !important; border-top: 0;font-size: .9em !important; }
