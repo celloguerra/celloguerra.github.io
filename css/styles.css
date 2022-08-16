@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 body {
-  background: url('/home/celloguerra/Projetos/celloguerra.github.io/assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg') no-repeat center center fixed;
+  background: url('https://celloguerra.com.br/assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
