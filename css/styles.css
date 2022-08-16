@@ -1,34 +1,15 @@
 @charset "UTF-8";
+
 body {
+  background: url('/home/celloguerra/Projetos/celloguerra.github.io/assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
   font-family: 'Poppins', sans-serif !important;
 }
 
-a {
-  color: #f4623a;
-  text-decoration: none;
-  background-color: transparent;
-}
-a:hover {
-  color: #942304;
-  text-decoration: none;
-}
-header.masthead {
-  background: url("../assets/img/charles-deluvio-OWkXt1ikC5g-unsplash.jpg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-attachment: scroll;
-  background-size: cover;
-}
-@media (min-width: 992px) {
-  header.masthead {
-    height: 100vh;
-    min-height: 40rem;
-    padding-bottom: 0;
-  }
-.card{
-  padding: 4rem 3rem;
-}
-
-.card-title{
-  font-weight: 700;
-}
+p{font-size: .8em !important;}
+h4 {font-size: 1em !important;}
+.btn {margin-bottom: 15px;}
+.card-title{font-weight: 700;}
