@@ -1,26 +1,33 @@
-title: Marcelo Guerra - Designer de Negócios Digitais
+title: Marcelo Guerra
 email: info@celloguerra.com.br
-description: >- # this means to ignore newlines until "baseurl:"
-  Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus objetivos na era digital com estratégias inovadoras e experiências transformadoras.
-baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://celloguerra.github.io" # Updated to likely github.io url if custom domain is not fully propagated or for testing
+description: >-
+  Digital Business Designer. Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus objetivos na era digital com estratégias inovadoras e experiências transformadoras.
+baseurl: ""
+url: "https://celloguerra.github.io"
 twitter_username: celloguerra
 github_username: celloguerra
 
+# Theme Settings
+remote_theme: zerostaticthemes/jekyll-serif-theme
+
 # Build settings
 markdown: kramdown
-theme: minima
 plugins:
   - jekyll-feed
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
 permalink: /blog/:year/:month/:day/:title/
 
-# Exclude from processing.
-# The following items will not be processed, by default.
+# Serif Theme Configuration (Minimal)
+header_pages:
+  - index.html
+  - index-en.html
+
 exclude:
   - Gemfile
   - Gemfile.lock
   - node_modules
-  - vendor/bundle/
-  - vendor/cache/
-  - vendor/gems/
-  - vendor/ruby/
+  - vendor/
+  - _layouts_backup/
+  - _includes_backup/

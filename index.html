@@ -1,63 +1,42 @@
 ---
 layout: default
-title: Marcelo Guerra - Designer de negócios digitais
-description: Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus objetivos na era digital com
-estratégias inovadoras e experiências transformadoras.
-lang: pt-BR
+title: Marcelo Guerra - Designer de Negócios Digitais
 ---
-<div class="container">
-    <div class="row">
-        <div class="col-md-8 mx-auto">
-            <!-- Profile Card -->
-            <div class="card border-0 shadow my-5 text-center">
-                <div class="card-body p-5">
-                    <div class="text-end mb-3">
-                        <a href="index-en.html" class="text-decoration-none text-muted" title="Switch to English">
-                            <i class="fas fa-globe"></i> EN
-                        </a>
-                    </div>
-                    <img src="{{ '/assets/img/20240411_0941331.jpg' | relative_url }}" alt="Marcelo Guerra"
-                        class="img-fluid" style="border-radius: 50%; width: 140px;">
-                    <h1 class="card-title">Marcelo Guerra</h1>
-                    <h4 class="card-subtitle text-muted">Designer de Negócios Digitais</h4>
-                    <p class="lead">Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus
-                        objetivos na era digital com estratégias inovadoras e experiências transformadoras.</p>
-                    <div>
-                        <a class="btn btn-outline-danger w-100"
-                            href="https://br.linkedin.com/in/celloguerra?trk=personal-website" class="card-link"
-                            target="_blank"><i class="fab fa-linkedin"></i><span class="btn-text">Currículo</span></a>
-                        <a class="btn btn-outline-danger w-100" href="https://www.behance.net/celloguerra/"
-                            class="card-link" target="_blank"><i class="fab fa-behance"></i><span
-                                class="btn-text">Portfólio</span></a>
-                        <a class="btn btn-outline-danger w-100" href="https://medium.com/@celloguerra" class="card-link"
-                            target="_blank"><i class="fab fa-medium"></i><span class="btn-text">Artigos</span></a>
-                        <a class="btn btn-outline-danger w-100" href="mailto:info@celloguerra.com.br" class="card-link"
-                            target="_top"><i class="fas fa-envelope"></i><span class="btn-text">E-mail</span></a>
-                        <a class="btn btn-outline-danger w-100" href="https://calendly.com/celloguerra/webconferencia"
-                            class="card-link" target="_blank"><i class="fas fa-calendar-alt"></i><span
-                                class="btn-text">Agenda</span></a>
-                    </div>
-                </div>
-                <!-- Blog Section -->
-                <div class="card-body p-5 text-start border-top">
-                    <h2 class="mb-4">Últimos Posts</h2>
-                    <ul class="list-unstyled">
-                        {% for post in site.posts %}
-                        <li class="mb-3">
-                            <span class="text-muted">{{ post.date | date: "%d/%m/%Y" }}</span>
-                            <br>
-                            <a href="{{ post.url | relative_url }}" class="h5 text-decoration-none text-danger">{{
-                                post.title }}</a>
-                            <p class="text-muted small">{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
-                        </li>
-                        {% endfor %}
-                    </ul>
-                </div>
-                <div class="card-footer">
-                    <p class="text-muted">Copyright © 2025 Marcelo Guerra - Construido com ❤, HTML, CSS e
-                        JavaScript.</p>
-                </div>
-            </div>
-        </div>
+
+<div class="intro">
+    <div class="intro-image">
+        <img src="{{ '/assets/img/20240411_0941331.jpg' | relative_url }}" alt="Marcelo Guerra"
+            style="width: 140px; border-radius: 50%;">
     </div>
+    <h1 class="intro-title">Marcelo Guerra</h1>
+    <p class="intro-text">Designer de Negócios Digitais</p>
+    <p>Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus objetivos na era digital com
+        estratégias inovadoras e experiências transformadoras.</p>
+</div>
+
+<div class="links text-center" style="margin: 20px 0;">
+    <a href="https://br.linkedin.com/in/celloguerra?trk=personal-website" target="_blank">LinkedIn</a> •
+    <a href="https://www.behance.net/celloguerra/" target="_blank">Portfólio</a> •
+    <a href="https://medium.com/@celloguerra" target="_blank">Medium</a> •
+    <a href="mailto:info@celloguerra.com.br">Email</a> •
+    <a href="https://calendly.com/celloguerra/webconferencia" target="_blank">Agenda</a>
+</div>
+
+<div class="lang-switch text-center" style="margin-bottom: 40px;">
+    <a href="{{ '/index-en.html' | relative_url }}">Switch to English 🇬🇧</a>
+</div>
+
+
+<h2 class="section-title">Últimos Posts</h2>
+
+<div class="post-list">
+    {% for post in site.posts %}
+    <div class="post-preview">
+        <a href="{{ post.url | relative_url }}">
+            <h3 class="post-title">{{ post.title }}</h3>
+        </a>
+        <p class="post-meta">{{ post.date | date: "%d/%m/%Y" }}</p>
+        <p>{{ post.excerpt | strip_html | truncatewords: 20 }}</p>
+    </div>
+    {% endfor %}
 </div>
