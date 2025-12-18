@@ -3,7 +3,7 @@ email: info@celloguerra.com.br
 description: >- # this means to ignore newlines until "baseurl:"
   Nos últimos 25 anos, tenho impulsionado dezenas de empresas a alcançar seus objetivos na era digital com estratégias inovadoras e experiências transformadoras.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://celloguerra.com.br" # the base hostname & protocol for your site
+url: "https://celloguerra.github.io" # Updated to likely github.io url if custom domain is not fully propagated or for testing
 twitter_username: celloguerra
 github_username: celloguerra
 
@@ -12,6 +12,7 @@ markdown: kramdown
 theme: minima
 plugins:
   - jekyll-feed
+permalink: /blog/:year/:month/:day/:title/
 
 # Exclude from processing.
 # The following items will not be processed, by default.
