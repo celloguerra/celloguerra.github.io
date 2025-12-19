@@ -1,0 +1,32 @@
+title: Marcelo Guerra
+description: Digital Business Designer
+url: "https://celloguerra.github.io"
+baseurl: ""
+
+# Theme Settings
+remote_theme: daviddarnes/alembic@main
+
+# Plugins
+plugins:
+  - jekyll-remote-theme
+  - jekyll-seo-tag
+
+# Alembic Specific Configuration
+# Navigation
+navigation:
+  - title: Home
+    url: /
+  - title: About
+    url: /about/
+  - title: English
+    url: /index-en.html
+
+# Social Links (based on existing content)
+social_links:
+  linkedin: https://br.linkedin.com/in/celloguerra?trk=personal-website
+  behance: https://www.behance.net/celloguerra/
+  medium: https://medium.com/@celloguerra
+  email: info@celloguerra.com.br
+
+# Color Settings (Optional overrides)
+# brand_color: "#e74c3c" # Example red from original site
