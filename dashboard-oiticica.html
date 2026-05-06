@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Global - Grupo Oiticica | Diretoria 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #1e3a5f;
+      --secondary: #2d5a87;
+      --accent: #e67e22;
+      --success: #27ae60;
+      --warning: #f39c12;
+      --danger: #c0392b;
+      --light: #f8f9fa;
+      --dark: #2c3e50;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--light); color: var(--dark); }
+    
+    /* Slide Navigation */
+    .nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--primary); padding: 1rem 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    }
+    .nav h1 { color: white; font-size: 1.3rem; }
+    .nav-buttons button {
+      background: var(--accent); color: white; border: none;
+      padding: 0.5rem 1.2rem; margin-left: 0.5rem;
+      border-radius: 5px; cursor: pointer; font-weight: 600;
+      transition: 0.3s;
+    }
+    .nav-buttons button:hover { background: #d35400; }
+    .nav-buttons button:disabled { background: #95a5a6; cursor: not-allowed; }
+    
+    /* Slides */
+    .slides { padding-top: 70px; }
+    .slide {
+      display: none; padding: 2rem; max-width: 1400px; margin: 0 auto;
+      animation: fadeIn 0.4s ease;
+    }
+    .slide.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    /* Cards & Layout */
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .card {
+      background: white; border-radius: 12px; padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid var(--secondary);
+    }
+    .card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; }
+    .metric { font-size: 2rem; font-weight: 700; color: var(--secondary); }
+    .metric small { display: block; font-size: 0.85rem; color: #666; font-weight: 400; margin-top: 0.3rem; }
+    
+    /* Tables */
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+    th { background: var(--primary); color: white; padding: 0.8rem; text-align: left; }
+    td { padding: 0.7rem 0.8rem; border-bottom: 1px solid #eee; }
+    tr:hover { background: #f8f9fa; }
+    
+    /* Charts */
+    .chart-container { 
+      background: white; border-radius: 12px; padding: 1.5rem; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 1.5rem 0; 
+      height: 350px; 
+    }
+    
+    /* Status Badges */
+    .badge { 
+      display: inline-block; padding: 0.25rem 0.6rem; 
+      border-radius: 20px; font-size: 0.8rem; font-weight: 600; 
+    }
+    .badge-success { background: #d4edda; color: #155724; }
+    .badge-warning { background: #fff3cd; color: #856404; }
+    .badge-danger { background: #f8d7da; color: #721c24; }
+    
+    /* Progress Bars */
+    .progress { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; margin: 0.5rem 0; }
+    .progress-bar { height: 100%; background: var(--success); transition: width 0.3s; }
+    
+    /* Footer */
+    .footer {
+      text-align: center; padding: 2rem; color: #666; font-size: 0.9rem;
+      border-top: 1px solid #eee; margin-top: 2rem;
+    }
+    
+    /* Slide Titles */
+    .slide-title {
+      display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+      padding-bottom: 1rem; border-bottom: 2px solid var(--secondary);
+    }
+    .slide-title h2 { color: var(--primary); font-size: 1.8rem; }
+    .slide-title .badge { font-size: 1rem; padding: 0.4rem 1rem; }
+    
+    /* Responsive */
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .nav h1 { font-size: 1.1rem; }
+      .grid { grid-template-columns: 1fr; }
+      .slide { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav class="nav">
+  <h1>📊 Dashboard Global - Grupo Oiticica</h1>
+  <div class="nav-buttons">
+    <button id="prevBtn" onclick="changeSlide(-1)" disabled>◀ Anterior</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Próximo ▶</button>
+  </div>
+</nav>
+
+<!-- Slides Container -->
+<div class="slides">
+
+  <!-- SLIDE 1: CAPA -->
+  <section class="slide active" id="slide0">
+    <div style="text-align: center; padding: 4rem 2rem;">
+      <h1 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+        🎯 Painel Executivo de Performance
+      </h1>
+      <h2 style="color: var(--secondary); margin-bottom: 2rem;">Grupo Oiticica | Janeiro - Dezembro 2025</h2>
+      
+      <div class="grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="card">
+          <h3>📦 CISS - Vendas</h3>
+          <div class="metric">R$ 64.85M <small>Pipeline Total</small></div>
+        </div>
+        <div class="card">
+          <h3>📞 PABX - Telefonia</h3>
+          <div class="metric">~2.5K+ <small>Chamadas/mês</small></div>
+        </div>
+        <div class="card">
+          <h3>💬 Blip - WhatsApp</h3>
+          <div class="metric">3.482 <small>Atendimentos Únicos</small></div>
+        </div>
+        <div class="card">
+          <h3>🤖 Omnismart - Omnichannel</h3>
+          <div class="metric">12.711 <small>Total de Atendimentos</small></div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 3rem; color: #666;">
+        <strong>Clique em "Próximo" para iniciar a apresentação</strong><br/>
+        <small>Use as setas do teclado ou os botões para navegar</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: CISS - VENDAS -->
+  <section class="slide" id="slide1">
+    <div class="slide-title">
+      <h2>📦 CISS - Analytics de Vendas</h2>
+      <span class="badge badge-success">Win Rate: 74.9%</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>💰 Pipeline Total</h3>
+        <div class="metric">R$ 64.85M</div>
+        <small>16.542 pedidos analisados</small>
+      </div>
+      <div class="card">
+        <h3>🏆 Ticket Médio</h3>
+        <div class="metric">R$ 3.921</div>
+        <small>Por ordem concluída</small>
+      </div>
+      <div class="card">
+        <h3>📊 Status do Pipeline</h3>
+        <div style="margin: 0.5rem 0;"><strong>✅ Efetivado:</strong> 74.9% (R$ 10.92M)</div>
+        <div class="progress"><div class="progress-bar" style="width: 74.9%; background: var(--success);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>❌ Vencido:</strong> 24.4% (R$ 21.06M)</div>
+        <div class="progress"><div class="progress-bar" style="width: 24.4%; background: var(--danger);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>⏳ Pendente:</strong> 0.3% (R$ 0.30M)</div>
+        <div class="progress"><div class="progress-bar" style="width: 0.3%; background: var(--warning);"></div></div>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="cissChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>🥇 Top 3 Clientes</h3>
+        <table>
+          <tr><th>Cliente</th><th>Valor</th><th>Pedidos</th></tr>
+          <tr><td>CONSUMIDOR FINAL 1</td><td>R$ 8.78M</td><td>4.236</td></tr>
+          <tr><td>IRMÃOS MOURA</td><td>R$ 1.02M</td><td>1</td></tr>
+          <tr><td>S P BARCELOS</td><td>R$ 697K</td><td>19</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>⭐ Top 3 Vendedores</h3>
+        <table>
+          <tr><th>Vendedor</th><th>Receita</th><th>Win Rate</th></tr>
+          <tr><td>Vanessa Santos</td><td>R$ 8.70M</td><td>72.1%</td></tr>
+          <tr><td>Tayane Toledo</td><td>R$ 6.50M</td><td>67.7%</td></tr>
+          <tr><td>Yuri Freitas</td><td>R$ 3.97M</td><td>82.9% ⭐</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color: var(--warning);">
+      <h3>🎯 Insight Estratégico</h3>
+      <p><strong>Atenção:</strong> Deals de alto valor (top 1%) têm win rate de apenas 16.9%, vs 74.9% geral.</p>
+      <p><strong>Ação Recomendada:</strong> Criar squad especializado para vendas enterprise com abordagem consultiva.</p>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: PABX - TELEFONIA -->
+  <section class="slide" id="slide2">
+    <div class="slide-title">
+      <h2>📞 PABX - Central de Atendimento</h2>
+      <span class="badge badge-warning">Answer Rate: ~70% (Meta: >80%)</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Status das Chamadas</h3>
+        <div style="margin: 0.5rem 0;"><strong>✅ Atendida:</strong> 65-75%</div>
+        <div class="progress"><div class="progress-bar" style="width: 70%; background: var(--success);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>❌ Não Atendida:</strong> 20-30%</div>
+        <div class="progress"><div class="progress-bar" style="width: 25%; background: var(--danger);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🔔 Ocupado:</strong> 3-5%</div>
+        <div class="progress"><div class="progress-bar" style="width: 4%; background: var(--warning);"></div></div>
+      </div>
+      <div class="card">
+        <h3>⏰ Picos de Atendimento</h3>
+        <p><strong>🔴 08:00-10:00:</strong> Maior volume - reforçar equipe</p>
+        <p><strong>🔴 14:00-17:00:</strong> Pico vespertino - manter cobertura</p>
+        <p><strong>🟢 12:00-14:00:</strong> Baixo volume - escala de almoço</p>
+      </div>
+      <div class="card">
+        <h3>📍 Origem das Ligações</h3>
+        <p><strong>(21) Rio de Janeiro:</strong> ~60% do volume</p>
+        <p><strong>(11) São Paulo:</strong> ~20% do volume</p>
+        <p><strong>(19) Campinas:</strong> ~10% do volume</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="pabxChart"></canvas>
+    </div>
+
+    <div class="card" style="border-left-color: var(--danger);">
+      <h3>⚠️ Alertas Críticos</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li><strong>Answer Rate abaixo da meta:</strong> 25-35% das chamadas não são atendidas</li>
+        <li><strong>Número de alto volume:</strong> (21) 96433-2905 com 150+ chamadas - investigar legitimidade</li>
+        <li><strong>Troncos sob carga:</strong> 1003, 1005, 1008, 1010 requerem monitoramento de congestão</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left-color: var(--success);">
+      <h3>✅ Oportunidades de Otimização</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li>Implementar IVR com opção de callback para reduzir filas</li>
+        <li>Integrar CRM para identificação automática de chamadas</li>
+        <li>Configurar alertas automáticos quando answer rate < 70%</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: BLIP - WHATSAPP BUSINESS -->
+  <section class="slide" id="slide3">
+    <div class="slide-title">
+      <h2>💬 Blip - WhatsApp Business</h2>
+      <span class="badge badge-success">Conversão: 64% (Orçamento → Pedido)</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>👥 Produtividade da Equipe</h3>
+        <div style="margin: 0.5rem 0;"><strong>🥇 Raphael Coutinho:</strong> 1.374 atendimentos (39%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 39%; background: var(--accent);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🥈 Mayara Medeiros:</strong> 730 atendimentos (21%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 21%;"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🥉 Robson Ribeiro:</strong> 383 atendimentos (11%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 11%;"></div></div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--warning);">
+          ⚠️ Raphael com 39% da carga: risco de fadiga. Recomenda-se redistribuir ~200 atendimentos/mês.
+        </p>
+      </div>
+      <div class="card">
+        <h3>🎯 Intenções dos Clientes</h3>
+        <table>
+          <tr><th>Intenção</th><th>Volume</th><th>%</th></tr>
+          <tr><td>[Orçamento]</td><td>1.039</td><td>29.8% 💰</td></tr>
+          <tr><td>[Informações]</td><td>901</td><td>25.9% ℹ️</td></tr>
+          <tr><td>[Inatividade]</td><td>715</td><td>20.5% ⚠️</td></tr>
+          <tr><td>[Pedido Fechado]</td><td>665</td><td>19.1% ✅</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>🏗️ Produtos Mais Demandados</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li><strong>Metalon 150x150</strong> 🔺 Reforçar estoque</li>
+          <li><strong>Coluna Ferro 5/16</strong> 🔺 Reforçar estoque</li>
+          <li><strong>Corte e Dobra sob medida</strong> 🎯 Destacar no catálogo</li>
+          <li><strong>Viga U / Chapa Galvanizada</strong> 🟡 Monitorar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="blipChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>🚀 Ações Imediatas (0-30 dias)</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+          <li>Implementar triagem automática: "Nome + Empresa?"</li>
+          <li>Campanha 08h30 para itens de giro (eletrodos, discos)</li>
+          <li>Rebalancear carga de atendimentos do Raphael</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--secondary);">
+        <h3>📈 Ações Estratégicas (30-90 dias)</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+          <li>Playbook para orçamentos com arquivos DWG/DXF</li>
+          <li>Estoque direcionado: Metalon + Coluna 5/16</li>
+          <li>Treinamento de retenção para chats inativos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: OMNISMART - OMNICHANNEL -->
+  <section class="slide" id="slide4">
+    <div class="slide-title">
+      <h2>🤖 Omnismart - Atendimento Omnichannel</h2>
+      <span class="badge badge-warning">57.4% sem categorização</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Visão Geral</h3>
+        <div class="metric">12.711 <small>Atendimentos (Ago-Dez/2025)</small></div>
+        <p style="margin-top: 1rem;"><strong>Canal Principal:</strong> WhatsApp (72.9%)</p>
+        <p><strong>Taxa de Entrada:</strong> 88.8%</p>
+        <p><strong>Agentes Ativos:</strong> 20 em 15 equipes</p>
+      </div>
+      <div class="card">
+        <h3>🔄 Funil de Conversão</h3>
+        <div style="margin: 0.5rem 0;"><strong>📋 Todos:</strong> 12.711 (100%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 100%; background: var(--dark);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>💰 Orçamentos:</strong> 2.301 (18.1%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 18.1%; background: var(--accent);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>✅ Pedidos Fechados:</strong> 1.253 (9.9%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 9.9%; background: var(--success);"></div></div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--warning);">
+          ⚠️ 57.4% sem categorização: implementar tabulação obrigatória
+        </p>
+      </div>
+      <div class="card">
+        <h3>⏱️ Métricas de Tempo</h3>
+        <p><strong>Tempo Médio de Atendimento:</strong> 406,5h ⚠️</p>
+        <p><strong>Mediana:</strong> 171,7h (outliers distorcendo)</p>
+        <p><strong>Tempo Médio de Espera:</strong> 671,8 min ⚠️</p>
+        <p><strong>Pico Diário:</strong> 09:00-11:00 (38.9% do volume)</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="omniChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>✅ Pontos Fortes</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+          <li>Taxa de conclusão: 99.3% em todas as categorias</li>
+          <li>Forte adoção do WhatsApp (72.9%)</li>
+          <li>Distribuição equilibrada Seg-Sex (94.5%)</li>
+          <li>Raphael Coutinho: 31.9% de conversão</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--danger);">
+        <h3>⚠️ Prioridades de Melhoria</h3>
+        <ol style="margin-left: 1.5rem; line-height: 1.8;">
+          <li>Implementar pesquisas NPS/CSAT em tempo real</li>
+          <li>Fluxos padronizados para "Orçamento"</li>
+          <li>Auditoria de logs: duração média suspeita (406h)</li>
+          <li>Treinamento em etiquetagem de clientes (90.8% sem tag)</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: CONCLUSÃO E PRÓXIMOS PASSOS -->
+  <section class="slide" id="slide5">
+    <div class="slide-title">
+      <h2>🎯 Síntese Estratégica</h2>
+      <span class="badge badge-success">Próximos Passos</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>✅ Destaques do Período</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li><strong>CISS:</strong> Win Rate de 74.9% acima do mercado</li>
+          <li><strong>Blip:</strong> Conversão de 64% no funil WhatsApp</li>
+          <li><strong>Omnismart:</strong> 12.7K atendimentos com 99.3% de conclusão</li>
+          <li><strong>PABX:</strong> Padrão sazonal identificado para otimização</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--warning);">
+        <h3>⚠️ Riscos a Mitigar</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li>Win Rate de deals enterprise: 16.9% (vs 74.9% geral)</li>
+          <li>Answer Rate PABX abaixo da meta (70% vs 80%)</li>
+          <li>20.5% de inatividade no WhatsApp (715 chats)</li>
+          <li>57.4% de atendimentos sem categorização no Omnismart</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--primary); color: white; border-left-color: var(--accent);">
+      <h3 style="color: white;">🚀 Roadmap de Implementação - Q1 2026</h3>
+      <div class="grid" style="margin-top: 1rem;">
+        <div>
+          <strong style="color: var(--accent);">Semana 1-2:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Implementar triagem automática no Blip</li>
+            <li>Auditoria de logs do Omnismart</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color: var(--accent);">Semana 3-4:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Rebalanceamento de carga da equipe Blip</li>
+            <li>Configurar alertas de answer rate no PABX</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color: var(--accent);">Semana 5-8:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Squad enterprise para deals >R$26K no CISS</li>
+            <li>Integração CRM + PABX para identificação de chamadas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="text-align: center; border-left-color: var(--accent);">
+      <h3>📥 Próximos Passos Imediatos</h3>
+      <p style="margin: 1rem 0; font-size: 1.1rem;">
+        1. <strong>Aprovar</strong> as ações prioritárias listadas<br/>
+        2. <strong>Designar</strong> responsáveis por cada iniciativa<br/>
+        3. <strong>Agendar</strong> revisão quinzenal de KPIs<br/>
+        4. <strong>Publicar</strong> este dashboard em <code>dashboard.oiticica.com.br</code>
+      </p>
+      <p style="color: var(--secondary); font-weight: 600;">
+        🔄 Atualização automática semanal • Dados em tempo real • Acesso por diretoria
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<!-- Footer -->
+<div class="footer">
+  <p><strong>Dashboard Global - Grupo Oiticica</strong> | Dados de Janeiro a Dezembro 2025</p>
+  <p style="margin-top: 0.5rem;">
+    Fontes: CISS • PABX • Blip • Omnismart | 
+    Última atualização: 05/05/2026 | 
+    <em>Para uso exclusivo da Diretoria</em>
+  </p>
+</div>
+
+<!-- Scripts -->
+<script>
+  // Slide Navigation
+  let currentSlide = 0;
+  const totalSlides = 6;
+  
+  function changeSlide(direction) {
+    document.getElementById(`slide${currentSlide}`).classList.remove('active');
+    currentSlide += direction;
+    currentSlide = Math.max(0, Math.min(currentSlide, totalSlides - 1));
+    document.getElementById(`slide${currentSlide}`).classList.add('active');
+    
+    // Update buttons
+    document.getElementById('prevBtn').disabled = currentSlide === 0;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    
+    // Initialize charts when slide is visible
+    if (currentSlide === 1) initCissChart();
+    if (currentSlide === 2) initPabxChart();
+    if (currentSlide === 3) initBlipChart();
+    if (currentSlide === 4) initOmniChart();
+  }
+  
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+  });
+  
+  // Chart: CISS - Pipeline Status
+  function initCissChart() {
+    const ctx = document.getElementById('cissChart');
+    if (!ctx || ctx.chart) return;
+    
+    ctx.chart = new Chart(ctx, {
+      type: 'doughnut',
+      data: {
+        labels: ['Efetivado (74.9%)', 'Vencido (24.4%)', 'Pendente (0.3%)'],
+        datasets: [{
+          data: [74.9, 24.4, 0.3],
+          backgroundColor: ['#27ae60', '#c0392b', '#f39c12'],
+          borderWidth: 0
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { position: 'bottom' },
+          title: { display: true, text: 'Distribuição do Pipeline - CISS', font: { size: 14 } }
+        }
+      }
+    });
+  }
+  
+  // Chart: PABX - Call Status
+  function initPabxChart() {
+    const ctx = document.getElementById('pabxChart');
+    if (!ctx || ctx.chart) return;
+    
+    ctx.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Atendida', 'Não Atendida', 'Ocupado', 'Falha'],
+        datasets: [{
+          label: 'Percentual',
+          data: [70, 25, 4, 1],
+          backgroundColor: ['#27ae60', '#c0392b', '#f39c12', '#95a5a6']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Status das Chamadas - PABX', font: { size: 14 } }
+        },
+        scales: {
+          y: { beginAtZero: true, max: 100, title: { display: true, text: '%' } }
+        }
+      }
+    });
+  }
+  
+  // Chart: Blip - Intenções
+  function initBlipChart() {
+    const ctx = document.getElementById('blipChart');
+    if (!ctx || ctx.chart) return;
+    
+    ctx.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Orçamento', 'Informações', 'Inatividade', 'Pedido Fechado', 'Outros'],
+        datasets: [{
+          label: 'Volume',
+          data: [1039, 901, 715, 665, 162],
+          backgroundColor: ['#e67e22', '#3498db', '#f39c12', '#27ae60', '#95a5a6']
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Intenções dos Clientes - Blip', font: { size: 14 } }
+        },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Quantidade' } }
+        }
+      }
+    });
+  }
+  
+  // Chart: Omnismart - Monthly Trend
+  function initOmniChart() {
+    const ctx = document.getElementById('omniChart');
+    if (!ctx || ctx.chart) return;
+    
+    ctx.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{
+          label: 'Atendimentos',
+          data: [823, 3314, 3270, 2957, 2347],
+          borderColor: '#2d5a87',
+          backgroundColor: 'rgba(45, 90, 135, 0.1)',
+          fill: true,
+          tension: 0.3
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Tendência Mensal - Omnismart', font: { size: 14 } }
+        },
+        scales: {
+          y: { beginAtZero: true, title: { display: true, text: 'Volume' } }
+        }
+      }
+    });
+  }
+  
+  // Initialize first chart on load
+  window.addEventListener('load', () => {
+    // Preload charts for better UX
+    setTimeout(initCissChart, 500);
+  });
+</script>
+
+</body>
+</html>
