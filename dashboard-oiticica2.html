@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dashboard Global - Grupo Oiticica | Diretoria 2026</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root {
+      --primary: #1e3a5f; --secondary: #2d5a87; --accent: #e67e22;
+      --success: #27ae60; --warning: #f39c12; --danger: #c0392b;
+      --light: #f8f9fa; --dark: #2c3e50;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', system-ui, sans-serif; }
+    body { background: var(--light); color: var(--dark); }
+    
+    .nav { position: fixed; top: 0; left: 0; right: 0; background: var(--primary); 
+      padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center;
+      z-index: 1000; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .nav h1 { color: white; font-size: 1.3rem; }
+    .nav-buttons button { background: var(--accent); color: white; border: none;
+      padding: 0.5rem 1.2rem; margin-left: 0.5rem; border-radius: 5px; cursor: pointer; 
+      font-weight: 600; transition: 0.3s; }
+    .nav-buttons button:hover { background: #d35400; }
+    .nav-buttons button:disabled { background: #95a5a6; cursor: not-allowed; }
+    
+    .slides { padding-top: 70px; }
+    .slide { display: none; padding: 2rem; max-width: 1400px; margin: 0 auto; animation: fadeIn 0.4s ease; }
+    .slide.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 1.5rem 0; }
+    .card { background: white; border-radius: 12px; padding: 1.5rem;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); border-left: 4px solid var(--secondary); }
+    .card h3 { color: var(--primary); margin-bottom: 1rem; font-size: 1.1rem; }
+    .metric { font-size: 2rem; font-weight: 700; color: var(--secondary); }
+    .metric small { display: block; font-size: 0.85rem; color: #666; font-weight: 400; margin-top: 0.3rem; }
+    
+    table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.95rem; }
+    th { background: var(--primary); color: white; padding: 0.8rem; text-align: left; }
+    td { padding: 0.7rem 0.8rem; border-bottom: 1px solid #eee; }
+    tr:hover { background: #f8f9fa; }
+    
+    .chart-container { background: white; border-radius: 12px; padding: 1.5rem; 
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin: 1.5rem 0; height: 350px; }
+    
+    .badge { display: inline-block; padding: 0.25rem 0.6rem; border-radius: 20px; 
+      font-size: 0.8rem; font-weight: 600; }
+    .badge-success { background: #d4edda; color: #155724; }
+    .badge-warning { background: #fff3cd; color: #856404; }
+    .badge-danger { background: #f8d7da; color: #721c24; }
+    
+    .progress { height: 8px; background: #e9ecef; border-radius: 4px; overflow: hidden; margin: 0.5rem 0; }
+    .progress-bar { height: 100%; transition: width 0.3s; }
+    
+    .footer { text-align: center; padding: 2rem; color: #666; font-size: 0.9rem;
+      border-top: 1px solid #eee; margin-top: 2rem; }
+    
+    .slide-title { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+      padding-bottom: 1rem; border-bottom: 2px solid var(--secondary); }
+    .slide-title h2 { color: var(--primary); font-size: 1.8rem; }
+    .slide-title .badge { font-size: 1rem; padding: 0.4rem 1rem; }
+    
+    .funnel-step { display: flex; align-items: center; gap: 1rem; padding: 0.8rem; 
+      background: #f8f9fa; border-radius: 8px; margin: 0.5rem 0; }
+    .funnel-step .step-num { 
+      background: var(--primary); color: white; width: 28px; height: 28px; 
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; 
+      font-weight: 700; font-size: 0.9rem; }
+    
+    @media (max-width: 768px) {
+      .nav { flex-direction: column; gap: 1rem; padding: 1rem; }
+      .nav h1 { font-size: 1.1rem; }
+      .grid { grid-template-columns: 1fr; }
+      .slide { padding: 1rem; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="nav">
+  <h1>📊 Dashboard Global - Grupo Oiticica</h1>
+  <div class="nav-buttons">
+    <button id="prevBtn" onclick="changeSlide(-1)" disabled>◀ Anterior</button>
+    <button id="nextBtn" onclick="changeSlide(1)">Próximo ▶</button>
+  </div>
+</nav>
+
+<div class="slides">
+
+  <!-- SLIDE 1: CAPA -->
+  <section class="slide active" id="slide0">
+    <div style="text-align: center; padding: 4rem 2rem;">
+      <h1 style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;">
+        🎯 Painel Executivo de Performance
+      </h1>
+      <h2 style="color: var(--secondary); margin-bottom: 2rem;">Grupo Oiticica | Janeiro - Dezembro 2025</h2>
+      
+      <div class="grid" style="max-width: 900px; margin: 0 auto;">
+        <div class="card">
+          <h3>📦 CISS - Vendas</h3>
+          <div class="metric">R$ 49,72M <small>Orçamentos</small></div>
+          <small style="color: var(--success);">→ R$ 15,14M em Pedidos (30,4%)</small>
+        </div>
+        <div class="card">
+          <h3>📞 PABX - Telefonia</h3>
+          <div class="metric">~2.5K+ <small>Chamadas/mês</small></div>
+        </div>
+        <div class="card">
+          <h3>💬 Blip - WhatsApp</h3>
+          <div class="metric">3.482 <small>Atendimentos Únicos</small></div>
+        </div>
+        <div class="card">
+          <h3>🤖 Omnismart - Omnichannel</h3>
+          <div class="metric">12.711 <small>Total de Atendimentos</small></div>
+        </div>
+      </div>
+      
+      <p style="margin-top: 3rem; color: #666;">
+        <strong>Clique em "Próximo" para iniciar a apresentação</strong><br/>
+        <small>Use as setas do teclado ou os botões para navegar</small>
+      </p>
+    </div>
+  </section>
+
+  <!-- SLIDE 2: CISS - VENDAS (ATUALIZADO) -->
+  <section class="slide" id="slide1">
+    <div class="slide-title">
+      <h2>📦 CISS - Analytics de Vendas</h2>
+      <span class="badge badge-warning">Conversão: 29,9% (Orc→Ped)</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>💰 Visão Comparativa</h3>
+        <div style="display: flex; justify-content: space-between; margin: 1rem 0;">
+          <div>
+            <strong style="color: var(--secondary);">Orçamentos</strong>
+            <div class="metric" style="font-size: 1.5rem;">R$ 49,72M</div>
+            <small>5.812 documentos</small>
+          </div>
+          <div style="text-align: right;">
+            <strong style="color: var(--success);">Pedidos</strong>
+            <div class="metric" style="font-size: 1.5rem; color: var(--success);">R$ 15,14M</div>
+            <small>10.733 documentos</small>
+          </div>
+        </div>
+        <div style="background: #fff3cd; padding: 0.8rem; border-radius: 8px; margin-top: 1rem;">
+          <strong style="color: #856404;">⚠️ Insight Crítico:</strong><br/>
+          Ticket médio de pedidos é <strong>83,5% menor</strong> que orçamentos<br/>
+          <small>(R$ 8.554 → R$ 1.410)</small>
+        </div>
+      </div>
+      
+      <div class="card">
+        <h3>📊 Status dos Documentos</h3>
+        <p><strong>Orçamentos:</strong></p>
+        <div style="margin: 0.3rem 0;"><strong>✅ Efetivado:</strong> 29,9%</div>
+        <div class="progress"><div class="progress-bar" style="width: 29.9%; background: var(--success);"></div></div>
+        <div style="margin: 0.3rem 0;"><strong>❌ Vencido:</strong> 69,4%</div>
+        <div class="progress"><div class="progress-bar" style="width: 69.4%; background: var(--danger);"></div></div>
+        <div style="margin: 0.3rem 0;"><strong>⏳ Pendente:</strong> 0,6%</div>
+        <div class="progress"><div class="progress-bar" style="width: 0.6%; background: var(--warning);"></div></div>
+        
+        <p style="margin-top: 1rem;"><strong>Pedidos:</strong></p>
+        <div style="margin: 0.3rem 0;"><strong>✅ Efetivado:</strong> 99,2% 🎯</div>
+        <div class="progress"><div class="progress-bar" style="width: 99.2%; background: var(--success);"></div></div>
+      </div>
+      
+      <div class="card">
+        <h3>📈 Conversão Mensal</h3>
+        <table>
+          <tr><th>Mês</th><th>Conv.</th><th>Receita</th></tr>
+          <tr><td>Set/25</td><td>24,5%</td><td>R$ 1,60M</td></tr>
+          <tr><td>Out/25</td><td><strong>34,2% 📈</strong></td><td>R$ 2,65M</td></tr>
+          <tr><td>Nov/25</td><td><strong>34,4% 📈</strong></td><td>R$ 2,08M</td></tr>
+          <tr><td>Dez/25</td><td>25,0%</td><td>R$ 1,12M</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Novo Gráfico: Funil de Conversão -->
+    <div class="chart-container">
+      <canvas id="cissFunnelChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card">
+        <h3>🥇 Top 3 Clientes (Pedidos)</h3>
+        <table>
+          <tr><th>Cliente</th><th>Valor</th><th>Pedidos</th></tr>
+          <tr><td>HOSPITAL SÃO VICENTE</td><td>R$ 325,9K</td><td>13</td></tr>
+          <tr><td>CONSUMIDOR FINAL 1</td><td>R$ 221,3K</td><td>1.873 ⚠️</td></tr>
+          <tr><td>UNIBEL ARMARINHO</td><td>R$ 122,1K</td><td>12</td></tr>
+        </table>
+        <small style="color: var(--warning); display: block; margin-top: 0.5rem;">
+          ⚠️ CONSUMIDOR FINAL 1: R$ 8,56Mi em orçamentos → apenas R$ 221K em pedidos
+        </small>
+      </div>
+      
+      <div class="card">
+        <h3>⭐ Top 3 Vendedores (Conversão)</h3>
+        <table>
+          <tr><th>Vendedor</th><th>Conv. Orc.</th><th>Pedidos (R$)</th></tr>
+          <tr><td>Yuri Pierrot Freitas ⭐</td><td><strong>36,8%</strong></td><td>R$ 1,01M</td></tr>
+          <tr><td>Leandro Soares ⭐</td><td><strong>35,9%</strong></td><td>R$ 1,30M</td></tr>
+          <tr><td>Vanessa Santos</td><td>35,6%</td><td>R$ 1,44M</td></tr>
+        </table>
+      </div>
+    </div>
+
+    <div class="card" style="border-left-color: var(--danger);">
+      <h3>🚨 Alertas Críticos</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li><strong>745 orçamentos vencidos > R$ 5K:</strong> R$ 16,56M em potencial perdido</li>
+        <li><strong>357 clientes com orçamento SEM pedido:</strong> R$ 5,36M não convertido</li>
+        <li><strong>Diferença de ticket médio -83,5%:</strong> Investigar fracionamento ou descontos agressivos</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left-color: var(--success);">
+      <h3>✅ Oportunidades Imediatas</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li><strong>35 orçamentos pendentes:</strong> R$ 284,4K para follow-up urgente</li>
+        <li><strong>Taxa de efetivação de pedidos: 99,2%</strong> → Excelente execução operacional</li>
+        <li><strong>Conversão de clientes: 75%</strong> → Acima da média do setor</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 3: PABX - TELEFONIA (inalterado) -->
+  <section class="slide" id="slide2">
+    <div class="slide-title">
+      <h2>📞 PABX - Central de Atendimento</h2>
+      <span class="badge badge-warning">Answer Rate: ~70% (Meta: >80%)</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Status das Chamadas</h3>
+        <div style="margin: 0.5rem 0;"><strong>✅ Atendida:</strong> 65-75%</div>
+        <div class="progress"><div class="progress-bar" style="width: 70%; background: var(--success);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>❌ Não Atendida:</strong> 20-30%</div>
+        <div class="progress"><div class="progress-bar" style="width: 25%; background: var(--danger);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🔔 Ocupado:</strong> 3-5%</div>
+        <div class="progress"><div class="progress-bar" style="width: 4%; background: var(--warning);"></div></div>
+      </div>
+      <div class="card">
+        <h3>⏰ Picos de Atendimento</h3>
+        <p><strong>🔴 08:00-10:00:</strong> Maior volume - reforçar equipe</p>
+        <p><strong>🔴 14:00-17:00:</strong> Pico vespertino - manter cobertura</p>
+        <p><strong>🟢 12:00-14:00:</strong> Baixo volume - escala de almoço</p>
+      </div>
+      <div class="card">
+        <h3>📍 Origem das Ligações</h3>
+        <p><strong>(21) Rio de Janeiro:</strong> ~60% do volume</p>
+        <p><strong>(11) São Paulo:</strong> ~20% do volume</p>
+        <p><strong>(19) Campinas:</strong> ~10% do volume</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="pabxChart"></canvas>
+    </div>
+
+    <div class="card" style="border-left-color: var(--danger);">
+      <h3>⚠️ Alertas Críticos</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li><strong>Answer Rate abaixo da meta:</strong> 25-35% das chamadas não são atendidas</li>
+        <li><strong>Número de alto volume:</strong> (21) 96433-2905 com 150+ chamadas - investigar legitimidade</li>
+        <li><strong>Troncos sob carga:</strong> 1003, 1005, 1008, 1010 requerem monitoramento de congestão</li>
+      </ul>
+    </div>
+
+    <div class="card" style="border-left-color: var(--success);">
+      <h3>✅ Oportunidades de Otimização</h3>
+      <ul style="margin-left: 1.5rem; line-height: 1.8;">
+        <li>Implementar IVR com opção de callback para reduzir filas</li>
+        <li>Integrar CRM para identificação automática de chamadas</li>
+        <li>Configurar alertas automáticos quando answer rate < 70%</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- SLIDE 4: BLIP - WHATSAPP BUSINESS (inalterado) -->
+  <section class="slide" id="slide3">
+    <div class="slide-title">
+      <h2>💬 Blip - WhatsApp Business</h2>
+      <span class="badge badge-success">Conversão: 64% (Orçamento → Pedido)</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>👥 Produtividade da Equipe</h3>
+        <div style="margin: 0.5rem 0;"><strong>🥇 Raphael Coutinho:</strong> 1.374 atendimentos (39%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 39%; background: var(--accent);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🥈 Mayara Medeiros:</strong> 730 atendimentos (21%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 21%;"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>🥉 Robson Ribeiro:</strong> 383 atendimentos (11%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 11%;"></div></div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--warning);">
+          ⚠️ Raphael com 39% da carga: risco de fadiga. Recomenda-se redistribuir ~200 atendimentos/mês.
+        </p>
+      </div>
+      <div class="card">
+        <h3>🎯 Intenções dos Clientes</h3>
+        <table>
+          <tr><th>Intenção</th><th>Volume</th><th>%</th></tr>
+          <tr><td>[Orçamento]</td><td>1.039</td><td>29.8% 💰</td></tr>
+          <tr><td>[Informações]</td><td>901</td><td>25.9% ℹ️</td></tr>
+          <tr><td>[Inatividade]</td><td>715</td><td>20.5% ⚠️</td></tr>
+          <tr><td>[Pedido Fechado]</td><td>665</td><td>19.1% ✅</td></tr>
+        </table>
+      </div>
+      <div class="card">
+        <h3>🏗️ Produtos Mais Demandados</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li><strong>Metalon 150x150</strong> 🔺 Reforçar estoque</li>
+          <li><strong>Coluna Ferro 5/16</strong> 🔺 Reforçar estoque</li>
+          <li><strong>Corte e Dobra sob medida</strong> 🎯 Destacar no catálogo</li>
+          <li><strong>Viga U / Chapa Galvanizada</strong> 🟡 Monitorar</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="blipChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>🚀 Ações Imediatas (0-30 dias)</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+          <li>Implementar triagem automática: "Nome + Empresa?"</li>
+          <li>Campanha 08h30 para itens de giro (eletrodos, discos)</li>
+          <li>Rebalancear carga de atendimentos do Raphael</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--secondary);">
+        <h3>📈 Ações Estratégicas (30-90 dias)</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8; font-size: 0.95rem;">
+          <li>Playbook para orçamentos com arquivos DWG/DXF</li>
+          <li>Estoque direcionado: Metalon + Coluna 5/16</li>
+          <li>Treinamento de retenção para chats inativos</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 5: OMNISMART - OMNICHANNEL (inalterado) -->
+  <section class="slide" id="slide4">
+    <div class="slide-title">
+      <h2>🤖 Omnismart - Atendimento Omnichannel</h2>
+      <span class="badge badge-warning">57.4% sem categorização</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card">
+        <h3>📊 Visão Geral</h3>
+        <div class="metric">12.711 <small>Atendimentos (Ago-Dez/2025)</small></div>
+        <p style="margin-top: 1rem;"><strong>Canal Principal:</strong> WhatsApp (72.9%)</p>
+        <p><strong>Taxa de Entrada:</strong> 88.8%</p>
+        <p><strong>Agentes Ativos:</strong> 20 em 15 equipes</p>
+      </div>
+      <div class="card">
+        <h3>🔄 Funil de Conversão</h3>
+        <div style="margin: 0.5rem 0;"><strong>📋 Todos:</strong> 12.711 (100%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 100%; background: var(--dark);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>💰 Orçamentos:</strong> 2.301 (18.1%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 18.1%; background: var(--accent);"></div></div>
+        <div style="margin: 0.5rem 0;"><strong>✅ Pedidos Fechados:</strong> 1.253 (9.9%)</div>
+        <div class="progress"><div class="progress-bar" style="width: 9.9%; background: var(--success);"></div></div>
+        <p style="margin-top: 1rem; font-size: 0.9rem; color: var(--warning);">
+          ⚠️ 57.4% sem categorização: implementar tabulação obrigatória
+        </p>
+      </div>
+      <div class="card">
+        <h3>⏱️ Métricas de Tempo</h3>
+        <p><strong>Tempo Médio de Atendimento:</strong> 406,5h ⚠️</p>
+        <p><strong>Mediana:</strong> 171,7h (outliers distorcendo)</p>
+        <p><strong>Tempo Médio de Espera:</strong> 671,8 min ⚠️</p>
+        <p><strong>Pico Diário:</strong> 09:00-11:00 (38.9% do volume)</p>
+      </div>
+    </div>
+
+    <div class="chart-container">
+      <canvas id="omniChart"></canvas>
+    </div>
+
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>✅ Pontos Fortes</h3>
+        <ul style="margin-left: 1.5rem; line-height: 1.8;">
+          <li>Taxa de conclusão: 99.3% em todas as categorias</li>
+          <li>Forte adoção do WhatsApp (72.9%)</li>
+          <li>Distribuição equilibrada Seg-Sex (94.5%)</li>
+          <li>Raphael Coutinho: 31.9% de conversão</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--danger);">
+        <h3>⚠️ Prioridades de Melhoria</h3>
+        <ol style="margin-left: 1.5rem; line-height: 1.8;">
+          <li>Implementar pesquisas NPS/CSAT em tempo real</li>
+          <li>Fluxos padronizados para "Orçamento"</li>
+          <li>Auditoria de logs: duração média suspeita (406h)</li>
+          <li>Treinamento em etiquetagem de clientes (90.8% sem tag)</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- SLIDE 6: CONCLUSÃO E PRÓXIMOS PASSOS (ATUALIZADO) -->
+  <section class="slide" id="slide5">
+    <div class="slide-title">
+      <h2>🎯 Síntese Estratégica</h2>
+      <span class="badge badge-success">Próximos Passos</span>
+    </div>
+    
+    <div class="grid">
+      <div class="card" style="border-left-color: var(--success);">
+        <h3>✅ Destaques do Período</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li><strong>CISS:</strong> 99,2% de efetivação em pedidos (excelente execução)</li>
+          <li><strong>CISS:</strong> 75% de conversão de clientes com orçamento</li>
+          <li><strong>Blip:</strong> Conversão de 64% no funil WhatsApp</li>
+          <li><strong>Omnismart:</strong> 12.7K atendimentos com 99.3% de conclusão</li>
+        </ul>
+      </div>
+      <div class="card" style="border-left-color: var(--danger);">
+        <h3>⚠️ Riscos a Mitigar</h3>
+        <ul style="margin-left: 1.5rem; line-height: 2;">
+          <li><strong>CISS:</strong> Conversão Orc→Ped de apenas 29,9% (R$ 34,58M não convertidos)</li>
+          <li><strong>CISS:</strong> 745 orçamentos >R$5K vencidos = R$ 16,56M em risco</li>
+          <li><strong>PABX:</strong> Answer Rate ~70% vs meta de 80%</li>
+          <li><strong>Omnismart:</strong> 57,4% de atendimentos sem categorização</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="card" style="background: var(--primary); color: white; border-left-color: var(--accent);">
+      <h3 style="color: white;">🚀 Roadmap de Implementação - Q1 2026</h3>
+      <div class="grid" style="margin-top: 1rem;">
+        <div>
+          <strong style="color: var(--accent);">Semana 1-2:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Exportar lista de 745 orçamentos vencidos >R$5K para ação comercial</li>
+            <li>Implementar triagem automática no Blip</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color: var(--accent);">Semana 3-4:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Campanha de reativação para 357 clientes com orçamento sem pedido</li>
+            <li>Auditoria amostral de 50 casos Orc→Ped (investigar -83,5% ticket)</li>
+          </ul>
+        </div>
+        <div>
+          <strong style="color: var(--accent);">Semana 5-8:</strong>
+          <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+            <li>Treinamento com vendedores top performers (Yuri, Leandro)</li>
+            <li>Integração CRM + PABX para identificação de chamadas</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" style="text-align: center; border-left-color: var(--accent);">
+      <h3>📥 Próximos Passos Imediatos</h3>
+      <p style="margin: 1rem 0; font-size: 1.1rem;">
+        1. <strong>Aprovar</strong> recuperação de R$ 16,56M em orçamentos vencidos<br/>
+        2. <strong>Designar</strong> responsáveis pela campanha de reativação<br/>
+        3. <strong>Agendar</strong> revisão quinzenal de conversão Orc→Ped<br/>
+        4. <strong>Publicar</strong> este dashboard atualizado em <code>dashboard.oiticica.com.br</code>
+      </p>
+      <p style="color: var(--secondary); font-weight: 600;">
+        🔄 Atualização automática semanal • Dados em tempo real • Acesso por diretoria
+      </p>
+    </div>
+  </section>
+
+</div>
+
+<div class="footer">
+  <p><strong>Dashboard Global - Grupo Oiticica</strong> | Dados de Janeiro a Dezembro 2025</p>
+  <p style="margin-top: 0.5rem;">
+    Fontes: CISS (Orçamentos+Pedidos) • PABX • Blip • Omnismart | 
+    Última atualização: 05/05/2026 | 
+    <em>Para uso exclusivo da Diretoria</em>
+  </p>
+</div>
+
+<script>
+  let currentSlide = 0;
+  const totalSlides = 6;
+  
+  function changeSlide(direction) {
+    document.getElementById(`slide${currentSlide}`).classList.remove('active');
+    currentSlide += direction;
+    currentSlide = Math.max(0, Math.min(currentSlide, totalSlides - 1));
+    document.getElementById(`slide${currentSlide}`).classList.add('active');
+    
+    document.getElementById('prevBtn').disabled = currentSlide === 0;
+    document.getElementById('nextBtn').disabled = currentSlide === totalSlides - 1;
+    
+    if (currentSlide === 1) initCissFunnelChart();
+    if (currentSlide === 2) initPabxChart();
+    if (currentSlide === 3) initBlipChart();
+    if (currentSlide === 4) initOmniChart();
+  }
+  
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowRight') changeSlide(1);
+    if (e.key === 'ArrowLeft') changeSlide(-1);
+  });
+  
+  // NOVO GRÁFICO: Funil de Conversão CISS
+  function initCissFunnelChart() {
+    const ctx = document.getElementById('cissFunnelChart');
+    if (!ctx || ctx.chart) return;
+    
+    ctx.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Orçamentos', 'Orc. Efetivados', 'Pedidos'],
+        datasets: [{
+          label: 'Volume (R$ Milhões)',
+          data: [49.72, 14.9, 15.14],
+          backgroundColor: ['#3498db', '#f39c12', '#27ae60'],
+          borderColor: ['#2980b9', '#d68910', '#219653'],
+          borderWidth: 2
+        }]
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        indexAxis: 'y',
+        plugins: {
+          legend: { display: false },
+          title: { display: true, text: 'Funil de Conversão: Orçamento → Pedido', font: { size: 14 } },
+          tooltip: {
+            callbacks: {
+              label: function(context) {
+                return `R$ ${context.parsed.x.toFixed(2)}M`;
+              }
+            }
+          }
+        },
+        scales: {
+          x: { beginAtZero: true, title: { display: true, text: 'Valor (R$ Milhões)' } }
+        }
+      }
+    });
+  }
+  
+  function initPabxChart() {
+    const ctx = document.getElementById('pabxChart');
+    if (!ctx || ctx.chart) return;
+    ctx.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Atendida', 'Não Atendida', 'Ocupado', 'Falha'],
+        datasets: [{
+          label: 'Percentual',
+          data: [70, 25, 4, 1],
+          backgroundColor: ['#27ae60', '#c0392b', '#f39c12', '#95a5a6']
+        }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: { display: true, text: 'Status das Chamadas - PABX', font: { size: 14 } } },
+        scales: { y: { beginAtZero: true, max: 100, title: { display: true, text: '%' } } }
+      }
+    });
+  }
+  
+  function initBlipChart() {
+    const ctx = document.getElementById('blipChart');
+    if (!ctx || ctx.chart) return;
+    ctx.chart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Orçamento', 'Informações', 'Inatividade', 'Pedido Fechado', 'Outros'],
+        datasets: [{ label: 'Volume', data: [1039, 901, 715, 665, 162],
+          backgroundColor: ['#e67e22', '#3498db', '#f39c12', '#27ae60', '#95a5a6'] }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: { display: true, text: 'Intenções dos Clientes - Blip', font: { size: 14 } } },
+        scales: { y: { beginAtZero: true, title: { display: true, text: 'Quantidade' } } }
+      }
+    });
+  }
+  
+  function initOmniChart() {
+    const ctx = document.getElementById('omniChart');
+    if (!ctx || ctx.chart) return;
+    ctx.chart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['Ago', 'Set', 'Out', 'Nov', 'Dez'],
+        datasets: [{ label: 'Atendimentos', data: [823, 3314, 3270, 2957, 2347],
+          borderColor: '#2d5a87', backgroundColor: 'rgba(45, 90, 135, 0.1)', fill: true, tension: 0.3 }]
+      },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        plugins: { legend: { display: false }, title: { display: true, text: 'Tendência Mensal - Omnismart', font: { size: 14 } } },
+        scales: { y: { beginAtZero: true, title: { display: true, text: 'Volume' } } }
+      }
+    });
+  }
+  
+  window.addEventListener('load', () => { setTimeout(initCissFunnelChart, 500); });
+</script>
+
+</body>
+</html>
