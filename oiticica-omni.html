@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Oiticica Omni </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(5px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .nav-item.active {
+            background-color: #0078C6;
+            color: white;
+        }
+
+        .nav-item.active i {
+            color: white;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: { dark: '#1f2937', primary: '#0078C6', light: '#fdba74' },
+                        erp: { primary: '#4f46e5', light: '#e0e7ff' },
+                        blip: { primary: '#0ea5e9', light: '#e0f2fe' }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="bg-gray-50 text-gray-800 font-sans flex h-screen overflow-hidden">
+
+    <!-- Sidebar de Navegação -->
+    <aside class="w-64 bg-white border-r border-gray-200 flex flex-col hidden md:flex z-10">
+        <div class="p-6 border-b border-gray-100 flex items-center gap-3">
+            <div class="w-8 h-8 bg-brand-primary rounded flex items-center justify-center text-white font-bold">O</div>
+            <h2 class="text-xl font-bold text-gray-800">Oiticica<span class="text-brand-primary">Omni</span></h2>
+        </div>
+        <nav class="flex-1 p-4 space-y-2 overflow-y-auto">
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-4 px-2">Comercial / Vendas</p>
+            <button onclick="switchTab('erp')" id="nav-erp"
+                class="nav-item active w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100 transition">
+                <i class="ph ph-currency-dollar text-xl text-gray-400"></i>
+                Vendas ERP (CISS)
+            </button>
+
+            <p class="text-xs font-bold text-gray-400 uppercase tracking-wider mb-2 mt-6 px-2">Canais de Atendimento</p>
+            <button onclick="switchTab('blip')" id="nav-blip"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100 transition">
+                <i class="ph ph-chat-circle-text text-xl text-gray-400"></i>
+                Visão Multi-Chat (Blip)
+            </button>
+            <button onclick="switchTab('omnismart')" id="nav-omnismart"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100 transition">
+                <i class="ph ph-whatsapp-logo text-xl text-gray-400"></i>
+                WhatsApp (Omnismart)
+            </button>
+            <button onclick="switchTab('pabx')" id="nav-pabx"
+                class="nav-item w-full flex items-center gap-3 px-4 py-3 text-sm font-medium text-gray-600 rounded-lg hover:bg-gray-100 transition">
+                <i class="ph ph-phone text-xl text-gray-400"></i>
+                Telefonia (PABX)
+            </button>
+        </nav>
+        <div class="p-4 border-t border-gray-200 text-xs text-gray-400">
+            Copyright © 2026 Marcelo Guerra
+        </div>
+    </aside>
+
+    <!-- Área de Conteúdo Principal -->
+    <main class="flex-1 overflow-y-auto p-4 md:p-8 bg-gray-50">
+
+        <!-- Mobile Header -->
+        <div class="md:hidden flex justify-between items-center mb-6 bg-white p-4 rounded-xl shadow-sm">
+            <h2 class="text-lg font-bold text-gray-800">Oiticica<span class="text-brand-primary">Omni</span></h2>
+            <select onchange="switchTab(this.value)"
+                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-brand-primary focus:border-brand-primary block p-2.5">
+                <option value="erp">Vendas ERP (CISS)</option>
+                <option value="blip">Visão Multi-Chat (Blip)</option>
+                <option value="omnismart">WhatsApp (Omnismart)</option>
+                <option value="pabx">Telefonia (PABX)</option>
+            </select>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 2: BLIP (VISÃO MULTI-CNPJ) - ATUALIZADA -->
+        <!-- ========================================== -->
+        <div id="tab-blip" class="tab-content max-w-7xl mx-auto">
+            <header
+                class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-sky-500">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">CNPJ 1
+                            (Serviços)</span>
+                        <span class="bg-orange-100 text-orange-800 text-xs font-semibold px-2.5 py-0.5 rounded">CNPJ 2
+                            (Produtos)</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-900">Análise Comparativa: Atendimento Blip</h1>
+                    <p class="text-sm text-gray-500 mt-1">Dados Históricos Consolidados: Janeiro a Setembro de 2025</p>
+                </div>
+            </header>
+
+            <!-- Cards Globais Blip -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Tickets Totais (Blip)</p>
+                        <h3 class="text-3xl font-bold text-gray-900">17.920</h3>
+                        <p class="text-xs text-gray-500 mt-2">Soma dos dois CNPJs</p>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-full text-gray-600"><i class="ph ph-ticket text-2xl"></i></div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden flex justify-between items-center">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-sky-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">CNPJ 1 (Corte e Dobra)</p>
+                        <h3 class="text-3xl font-bold text-sky-600">5.420</h3>
+                        <p class="text-xs text-gray-500 mt-2">Venda Técnica (Alta complexidade)</p>
+                    </div>
+                    <div class="bg-sky-100 p-3 rounded-full text-sky-600"><i class="ph ph-wrench text-2xl"></i></div>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 relative overflow-hidden flex justify-between items-center">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-brand-primary"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">CNPJ 2 (Produtos)</p>
+                        <h3 class="text-3xl font-bold text-brand-primary">12.500</h3>
+                        <p class="text-xs text-gray-500 mt-2">Varejo/Balcão (Alta velocidade)</p>
+                    </div>
+                    <div class="bg-orange-100 p-3 rounded-full text-brand-primary"><i
+                            class="ph ph-shopping-bag text-2xl"></i></div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Interações / Ticket</p>
+                        <h3 class="text-xl font-bold text-gray-900"><span class="text-sky-600">15</span> vs <span
+                                class="text-brand-primary">4</span></h3>
+                        <p class="text-xs text-gray-500 mt-2">Serviços vs Produtos</p>
+                    </div>
+                    <div class="bg-gray-100 p-3 rounded-full text-gray-600"><i class="ph ph-chats text-2xl"></i></div>
+                </div>
+            </div>
+
+            <!-- Comparativo Visual Blip -->
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Volume de Tickets por Operação</h3>
+                    <p class="text-xs text-gray-500 mb-4">CNPJ 2 representa 70% do volume de entradas na plataforma.</p>
+                    <div class="relative h-64 w-full flex justify-center">
+                        <canvas id="chartBlipCnpjVolume"></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Esforço de Atendimento (Interações Médias)</h3>
+                    <p class="text-xs text-gray-500 mb-4">A operação de Serviços exige mais trocas de mensagens (envio
+                        de PDFs, medidas).</p>
+                    <div class="relative h-64 w-full">
+                        <canvas id="chartBlipInteractions"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Deep Dive CNPJ 1 vs CNPJ 2 -->
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8">
+                <div class="p-6 border-b border-gray-100 bg-gray-50">
+                    <h3 class="text-lg font-semibold text-gray-800 flex items-center">
+                        <i class="ph ph-funnel text-gray-600 mr-2 text-xl"></i>
+                        Status de Encerramento: O Risco da Inatividade
+                    </h3>
+                    <p class="text-sm text-gray-500 mt-1">Comparativo direto de como as jornadas são encerradas em cada
+                        CNPJ.</p>
+                </div>
+                <div class="p-6 grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h4 class="font-bold text-sky-700 mb-4 text-center">CNPJ 1 (Serviços - Corte e Dobra)</h4>
+                        <div class="relative h-48 w-full">
+                            <canvas id="chartBlipStatusCNPJ1"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-red-600 font-semibold mt-4">⚠️ Alerta: 21,5% de perda por
+                            cliente parar de responder (demora no orçamento técnico).</p>
+                    </div>
+                    <div class="border-t md:border-t-0 md:border-l border-gray-100 pt-6 md:pt-0 md:pl-8">
+                        <h4 class="font-bold text-brand-primary mb-4 text-center">CNPJ 2 (Produtos de Varejo)</h4>
+                        <div class="relative h-48 w-full">
+                            <canvas id="chartBlipStatusCNPJ2"></canvas>
+                        </div>
+                        <p class="text-xs text-center text-green-600 font-semibold mt-4">✅ Saudável: 82% resolvidos
+                            ativamente pelo atendente no ato.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 1: ERP CISS (VENDAS E ORÇAMENTOS) - INTACTA -->
+        <!-- ========================================== -->
+        <div id="tab-erp" class="tab-content active max-w-7xl mx-auto">
+            <header
+                class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-indigo-600">
+                <div>
+                    <div class="flex items-center gap-2 mb-1">
+                        <span class="bg-indigo-100 text-indigo-800 text-xs font-semibold px-2.5 py-0.5 rounded">Módulo
+                            Financeiro/Comercial</span>
+                    </div>
+                    <h1 class="text-2xl font-bold text-gray-900">Performance de Vendas (ERP)</h1>
+                    <p class="text-sm text-gray-500 mt-1">Período Consolidado | Múltiplos CNPJs</p>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Faturamento</p>
+                        <h3 class="text-2xl font-bold text-gray-900">R$ 1.245.890</h3>
+                    </div>
+                    <div class="bg-indigo-100 p-3 rounded-full text-indigo-600"><i class="ph ph-money text-2xl"></i>
+                    </div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-yellow-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Volume Orçado</p>
+                        <h3 class="text-2xl font-bold text-gray-900">R$ 4.560.200</h3>
+                    </div>
+                    <div class="bg-yellow-100 p-3 rounded-full text-yellow-600"><i class="ph ph-file-text text-2xl"></i>
+                    </div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Conversão Global</p>
+                        <h3 class="text-2xl font-bold text-red-600">27,3%</h3>
+                    </div>
+                    <div class="bg-red-100 p-3 rounded-full text-red-600"><i class="ph ph-funnel text-2xl"></i></div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 flex justify-between items-center relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-green-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Ticket Médio</p>
+                        <h3 class="text-2xl font-bold text-green-700">R$ 1.150</h3>
+                    </div>
+                    <div class="bg-green-100 p-3 rounded-full text-green-700"><i
+                            class="ph ph-shopping-cart text-2xl"></i></div>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden mb-8 p-6">
+                <h3 class="text-lg font-semibold text-gray-800 mb-4 flex items-center"><i
+                        class="ph ph-buildings text-indigo-600 mr-2 text-xl"></i>Análise por Unidade de Negócio (CNPJ)
+                </h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div class="relative h-64 w-full flex justify-center"><canvas id="chartCnpjShare"></canvas></div>
+                    <div class="space-y-6">
+                        <div class="p-4 rounded-lg bg-gray-50 border border-gray-100">
+                            <h4 class="font-bold text-gray-800">1 - Oiticica Comércio de Ferro Ltda</h4>
+                            <p class="text-sm text-gray-500 mb-2">Maior concentração de contas industriais e obras.</p>
+                            <div class="flex justify-between text-sm"><span>Faturamento: <strong
+                                        class="text-indigo-600">R$ 872.123,00</strong></span><span>Ticket Médio:
+                                    <strong>R$ 1.840,00</strong></span></div>
+                        </div>
+                        <div class="p-4 rounded-lg bg-gray-50 border border-gray-100">
+                            <h4 class="font-bold text-gray-800">2 - Oiticica Comércio de Ferro</h4>
+                            <p class="text-sm text-gray-500 mb-2">Forte tração em balcão, serralheiros e consumidor
+                                final.</p>
+                            <div class="flex justify-between text-sm"><span>Faturamento: <strong
+                                        class="text-brand-primary">R$ 373.767,00</strong></span><span>Ticket Médio:
+                                    <strong>R$ 480,00</strong></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Funil Financeiro</h3>
+                    <p class="text-xs text-gray-500 mb-4">Orçado vs Realizado.</p>
+                    <div class="relative h-64 w-full"><canvas id="chartFunilErp"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Top Vendedores (Efetivado)</h3>
+                    <p class="text-xs text-gray-500 mb-4">Faturamento convertido no CISS.</p>
+                    <div class="relative h-64 w-full"><canvas id="chartVendedoresErp"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 3: OMNISMART (WHATSAPP) - TABELA RESTAURADA -->
+        <!-- ========================================== -->
+        <div id="tab-omnismart" class="tab-content max-w-7xl mx-auto">
+            <header
+                class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-green-500">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Digital & WhatsApp (Omnismart)</h1>
+                    <p class="text-sm text-gray-500 mt-1">Visão Original e Completa de Atendimentos Assíncronos</p>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Volume de Tickets</p>
+                        <h3 class="text-3xl font-bold text-gray-900">28.450</h3>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-full text-green-600"><i class="ph ph-chats text-2xl"></i></div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Tempo Médio Espera</p>
+                        <h3 class="text-3xl font-bold text-red-600">42 min</h3>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-full text-red-600"><i class="ph ph-hourglass-high text-2xl"></i>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Fechamento Direto</p>
+                        <h3 class="text-3xl font-bold text-gray-900">14,2%</h3>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-full text-blue-600"><i class="ph ph-check-circle text-2xl"></i>
+                    </div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Risco de CRM</p>
+                        <h3 class="text-3xl font-bold text-gray-900">38,5%</h3>
+                    </div>
+                    <div class="bg-orange-100 p-4 rounded-full text-orange-600"><i
+                            class="ph ph-warning-circle text-2xl"></i></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Desempenho Comercial (Tabulação)</h3>
+                    <div class="relative h-64 w-full flex justify-center"><canvas id="chartTabulacaoOmni"></canvas>
+                    </div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Duração vs Tempo de Espera (SLA)</h3>
+                    <div class="relative h-64 w-full"><canvas id="chartTemposOmni"></canvas></div>
+                </div>
+            </div>
+
+            <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
+                <h3 class="text-lg font-semibold text-gray-800 mb-1">Volume de Atendimentos por Equipe</h3>
+                <div class="relative h-64 w-full"><canvas id="chartEquipesOmni"></canvas></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Top 5 Vendedores</h3>
+                    <div class="relative h-64 w-full"><canvas id="chartTopAgentesOmni"></canvas></div>
+                </div>
+
+                <!-- TABELA RESTAURADA POR COMPLETO -->
+                <div class="bg-white rounded-xl shadow-sm border border-gray-100 overflow-hidden lg:col-span-2">
+                    <div class="p-6 border-b border-gray-100 bg-gray-50">
+                        <h3 class="text-lg font-semibold text-gray-800 flex items-center"><i
+                                class="ph ph-medal text-brand-primary mr-2 text-xl"></i>Ranking Comercial</h3>
+                    </div>
+                    <div class="overflow-x-auto">
+                        <table class="w-full text-sm text-left text-gray-500">
+                            <thead class="text-xs text-gray-700 uppercase bg-white border-b border-gray-100">
+                                <tr>
+                                    <th class="px-6 py-4">Pos</th>
+                                    <th class="px-6 py-4">Vendedor</th>
+                                    <th class="px-6 py-4">Equipe</th>
+                                    <th class="px-6 py-4 text-center">Volume</th>
+                                    <th class="px-6 py-4 text-center">Tx. Conversão</th>
+                                    <th class="px-6 py-4 text-center">Status SLA</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-bold text-yellow-500"><i
+                                            class="ph-fill ph-trophy text-lg"></i> 1</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">Thayllane Fidelis</td>
+                                    <td class="px-6 py-4">Comercial</td>
+                                    <td class="px-6 py-4 text-center font-semibold">1.842</td>
+                                    <td class="px-6 py-4 text-center text-green-600 font-bold">18,5%</td>
+                                    <td class="px-6 py-4 text-center"><span
+                                            class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Dentro
+                                            do Padrão</span></td>
+                                </tr>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-bold text-gray-400"><i
+                                            class="ph-fill ph-medal text-lg"></i> 2</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">Raphael Abreu</td>
+                                    <td class="px-6 py-4">Comercial</td>
+                                    <td class="px-6 py-4 text-center font-semibold">1.650</td>
+                                    <td class="px-6 py-4 text-center text-green-600 font-bold">16,2%</td>
+                                    <td class="px-6 py-4 text-center"><span
+                                            class="bg-yellow-100 text-yellow-800 text-xs font-medium px-2.5 py-0.5 rounded">Atenção
+                                            (Tickets)</span></td>
+                                </tr>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-bold text-orange-400"><i
+                                            class="ph-fill ph-medal text-lg"></i> 3</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">Tayane Toledo</td>
+                                    <td class="px-6 py-4">Equipe Tayane</td>
+                                    <td class="px-6 py-4 text-center font-semibold">1.420</td>
+                                    <td class="px-6 py-4 text-center text-gray-700">12,1%</td>
+                                    <td class="px-6 py-4 text-center"><span
+                                            class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Dentro
+                                            do Padrão</span></td>
+                                </tr>
+                                <tr class="bg-white border-b hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-bold text-gray-500">4</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">Maria Aparecida</td>
+                                    <td class="px-6 py-4">Comercial</td>
+                                    <td class="px-6 py-4 text-center font-semibold">1.150</td>
+                                    <td class="px-6 py-4 text-center text-gray-700">10,8%</td>
+                                    <td class="px-6 py-4 text-center"><span
+                                            class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">Dentro
+                                            do Padrão</span></td>
+                                </tr>
+                                <tr class="bg-white hover:bg-gray-50">
+                                    <td class="px-6 py-4 font-bold text-gray-500">5</td>
+                                    <td class="px-6 py-4 font-medium text-gray-900">Raphael Coutinho</td>
+                                    <td class="px-6 py-4">Serviço</td>
+                                    <td class="px-6 py-4 text-center font-semibold">985</td>
+                                    <td class="px-6 py-4 text-center text-brand-primary font-bold">22,4%</td>
+                                    <td class="px-6 py-4 text-center"><span
+                                            class="bg-red-100 text-red-800 text-xs font-medium px-2.5 py-0.5 rounded">Crítico
+                                            (Espera)</span></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ========================================== -->
+        <!-- ABA 4: PABX (TELEFONIA) - INTACTA -->
+        <!-- ========================================== -->
+        <div id="tab-pabx" class="tab-content max-w-7xl mx-auto">
+            <header
+                class="flex flex-col md:flex-row justify-between items-center mb-8 bg-white p-6 rounded-xl shadow-sm border-l-4 border-blue-500">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">Dashboard de Telefonia (PABX)</h1>
+                    <p class="text-sm text-gray-500 mt-1">Visão Original e Detalhada da Operação</p>
+                </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Volume Total</p>
+                        <h3 class="text-3xl font-bold text-gray-900">8.452</h3>
+                    </div>
+                    <div class="bg-blue-100 p-4 rounded-full text-blue-600"><i class="ph ph-phone text-2xl"></i></div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-red-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Taxa de Abandono</p>
+                        <h3 class="text-3xl font-bold text-red-600">22,4%</h3>
+                    </div>
+                    <div class="bg-red-100 p-4 rounded-full text-red-600"><i
+                            class="ph ph-phone-disconnect text-2xl"></i></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100">
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Tempo Médio</p>
+                        <h3 class="text-3xl font-bold text-gray-900">02:18 <span
+                                class="text-sm font-normal text-gray-500">min</span></h3>
+                    </div>
+                    <div class="bg-green-100 p-4 rounded-full text-green-600"><i class="ph ph-clock text-2xl"></i></div>
+                </div>
+                <div
+                    class="bg-white p-6 rounded-xl shadow-sm flex items-center justify-between border border-gray-100 relative overflow-hidden">
+                    <div class="absolute left-0 top-0 bottom-0 w-1 bg-orange-500"></div>
+                    <div>
+                        <p class="text-sm text-gray-500 mb-1">Esforço Ativo</p>
+                        <h3 class="text-3xl font-bold text-gray-900">2.460</h3>
+                    </div>
+                    <div class="bg-orange-100 p-4 rounded-full text-orange-600"><i class="ph ph-headset text-2xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Evolução Mensal</h3>
+                    <div class="relative h-64 w-full"><canvas id="chartEvolucaoPabx"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-4">Eficiência de Recepção</h3>
+                    <div class="relative h-64 w-full flex justify-center"><canvas id="chartStatusPabx"></canvas></div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100 lg:col-span-2">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Mapa de Demanda (Horários)</h3>
+                    <div class="relative h-64 w-full"><canvas id="chartHorariosPabx"></canvas></div>
+                </div>
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
+                    <h3 class="text-lg font-semibold text-gray-800 mb-1">Esforço por Ramal</h3>
+                    <div class="relative h-64 w-full"><canvas id="chartRamaisPabx"></canvas></div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        // Lógica de Navegação
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            const navBtn = document.getElementById(`nav-${tabId}`);
+            if (navBtn) navBtn.classList.add('active');
+        }
+
+        const formatterBRL = new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL', maximumFractionDigits: 0 });
+
+        // Cores utilitárias PABX
+        const corEntrada = '#3b82f6'; const corSaida = '#f97316'; const corNaoAtendida = '#ef4444'; const corAtendida = '#22c55e';
+
+        // ==========================================
+        // GRÁFICOS BLIP (VISÃO MULTI-CNPJ) - ATUALIZADOS
+        // ==========================================
+        new Chart(document.getElementById('chartBlipCnpjVolume').getContext('2d'), {
+            type: 'doughnut',
+            data: {
+                labels: ['CNPJ 1 (Serviços) - 30%', 'CNPJ 2 (Produtos) - 70%'],
+                datasets: [{ data: [5420, 12500], backgroundColor: ['#0ea5e9', '#f97316'], borderWidth: 0 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } }
+        });
+
+        new Chart(document.getElementById('chartBlipInteractions').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['CNPJ 1 (Serviços Técnicos)', 'CNPJ 2 (Produtos de Varejo)'],
+                datasets: [{
+                    label: 'Mensagens Médias por Ticket',
+                    data: [15, 4],
+                    backgroundColor: ['#0ea5e9', '#f97316'],
+                    borderRadius: 4
+                }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+        });
+
+        new Chart(document.getElementById('chartBlipStatusCNPJ1').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Atendente Fechou', 'Inatividade (Perda)', 'Outros'],
+                datasets: [{ label: '% dos Tickets', data: [61.0, 21.5, 17.5], backgroundColor: ['#22c55e', '#ef4444', '#9ca3af'], borderRadius: 4 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { max: 100 } } }
+        });
+
+        new Chart(document.getElementById('chartBlipStatusCNPJ2').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: ['Atendente Fechou', 'Inatividade (Perda)', 'Outros'],
+                datasets: [{ label: '% dos Tickets', data: [82.0, 5.0, 13.0], backgroundColor: ['#22c55e', '#ef4444', '#9ca3af'], borderRadius: 4 }]
+            },
+            options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { y: { max: 100 } } }
+        });
+
+        // ==========================================
+        // GRÁFICOS ERP CISS (PRESERVADOS - INTACTOS)
+        // ==========================================
+        new Chart(document.getElementById('chartCnpjShare').getContext('2d'), { type: 'doughnut', data: { labels: ['Empresa 1 (Obras/Indústria)', 'Empresa 2 (Balcão)'], datasets: [{ data: [70, 30], backgroundColor: ['#4f46e5', '#f97316'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '75%', plugins: { legend: { position: 'bottom' } } } });
+        new Chart(document.getElementById('chartFunilErp').getContext('2d'), { type: 'bar', data: { labels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4'], datasets: [{ label: 'Orçado', data: [1100000, 1250000, 1180000, 1030200], backgroundColor: '#fde047' }, { label: 'Fechado', data: [280500, 310000, 335000, 320390], backgroundColor: '#22c55e' }] }, options: { responsive: true, maintainAspectRatio: false } });
+        new Chart(document.getElementById('chartVendedoresErp').getContext('2d'), { type: 'bar', data: { labels: ['Vanessa', 'Thayllane', 'Maria', 'Tayane', 'Diego'], datasets: [{ label: 'Faturamento', data: [315000, 280000, 210000, 185000, 110000], backgroundColor: '#4f46e5' }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y' } });
+
+        // ==========================================
+        // GRÁFICOS OMNISMART (PRESERVADOS - INTACTOS)
+        // ==========================================
+        new Chart(document.getElementById('chartTabulacaoOmni').getContext('2d'), { type: 'pie', data: { labels: ['Orçamento', 'Pedido Fechado', 'Informações', 'Sem Tabulação'], datasets: [{ data: [28.5, 14.2, 18.8, 38.5], backgroundColor: ['#3b82f6', '#22c55e', '#a855f7', '#f43f5e'], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } } });
+        new Chart(document.getElementById('chartTemposOmni').getContext('2d'), { type: 'line', data: { labels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4', 'Mês 5'], datasets: [{ label: 'Espera (Min)', data: [55, 48, 42, 38, 45], borderColor: '#ef4444', backgroundColor: '#ef444433', fill: true }, { label: 'Duração (Min)', data: [120, 115, 90, 85, 95], borderColor: '#8b5cf6', borderDash: [5, 5] }] }, options: { responsive: true, maintainAspectRatio: false } });
+        new Chart(document.getElementById('chartEquipesOmni').getContext('2d'), { type: 'bar', data: { labels: ['Comercial', 'Serviços', 'Leandro', 'Tayane', 'S/ Atribuição'], datasets: [{ label: 'Atendimentos', data: [14200, 6800, 3100, 2900, 1450], backgroundColor: '#10b981' }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y' } });
+        new Chart(document.getElementById('chartTopAgentesOmni').getContext('2d'), { type: 'bar', data: { labels: ['Thayllane', 'Raphael A.', 'Tayane', 'Maria', 'Raphael C.'], datasets: [{ label: 'Volume', data: [1842, 1650, 1420, 1150, 985], backgroundColor: '#f97316' }] }, options: { responsive: true, maintainAspectRatio: false, indexAxis: 'y', plugins: { legend: { display: false } } } });
+
+        // ==========================================
+        // GRÁFICOS PABX (PRESERVADOS - INTACTOS)
+        // ==========================================
+        new Chart(document.getElementById('chartEvolucaoPabx').getContext('2d'), { type: 'line', data: { labels: ['Mês 1', 'Mês 2', 'Mês 3', 'Mês 4'], datasets: [{ label: 'Entrada', data: [1350, 1420, 1580, 1642], borderColor: corEntrada, fill: true }, { label: 'Saída', data: [520, 580, 650, 710], borderColor: corSaida, fill: true }] }, options: { responsive: true, maintainAspectRatio: false } });
+        new Chart(document.getElementById('chartStatusPabx').getContext('2d'), { type: 'doughnut', data: { labels: ['Atendidas', 'Perdidas'], datasets: [{ data: [4652, 1340], backgroundColor: [corAtendida, corNaoAtendida], borderWidth: 0 }] }, options: { responsive: true, maintainAspectRatio: false, cutout: '70%', plugins: { legend: { position: 'bottom' } } } });
+        new Chart(document.getElementById('chartHorariosPabx').getContext('2d'), { type: 'bar', data: { labels: ['08h', '09h', '10h', '11h', '12h', '13h', '14h', '15h', '16h', '17h'], datasets: [{ label: 'Volume', data: [850, 920, 1150, 890, 420, 680, 750, 810, 620, 310], backgroundColor: corEntrada }] }, options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+        new Chart(document.getElementById('chartRamaisPabx').getContext('2d'), { type: 'bar', data: { labels: ['1008', '1003', '1010', '1006', '1001'], datasets: [{ label: 'Volume', data: [1240, 1180, 950, 820, 610], backgroundColor: corSaida }] }, options: { indexAxis: 'y', responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } } } });
+    </script>
+</body>
+
+</html>
